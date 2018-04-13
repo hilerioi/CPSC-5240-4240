@@ -1,0 +1,25 @@
+input {
+    background-color: gray;
+}
+.menu {
+    color: red;
+}
+#searchLabel {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+.resultContainerHidden {
+    color: blue;
+}
+#searchButton:hover {
+    background-color: green;
+}
+#searchButton:active {
+    background-color: black;
+    color: white;
+}
+#searchButton {
+    background-color: yellow;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px;
+}

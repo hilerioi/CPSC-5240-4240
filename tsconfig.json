@@ -1,0 +1,10 @@
+{
+    "files": [
+        "sample1.ts",
+        "utilities.ts"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "target": "es5"
+    }
+}
