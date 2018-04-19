@@ -5,10 +5,13 @@ This directory contains one express servers:
 Make sure you install the node.js server software.  Ensure your path variable contains the execution path of the node.js binary.
 
 To execute the server run the following commands:
+
 -install prerequisites: 
 1. npm install
+
 -compile AppServer.ts:
 2. tsc AppServer.ts
+
 -execute AppServer:
 3. node AppServer.js
 
