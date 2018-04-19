@@ -6,13 +6,13 @@ Make sure you install the node.js server software.  Ensure your path variable co
 
 To execute the server run the following commands:
 
--install prerequisites: 
+#install prerequisites: 
 1. npm install
 
--compile AppServer.ts:
+#compile AppServer.ts:
 2. tsc AppServer.ts
 
--execute AppServer:
+#execute AppServer:
 3. node AppServer.js
 
 To test static server routes, try the following URL on the browser while the server is running:
