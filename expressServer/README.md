@@ -18,7 +18,7 @@ To test static server routes, try the following URL on the browser while the ser
 * http://localhost:8080/images/image1.png
 
 To test dynaic server routes, try the following URL on the browser while the server is running:
-* http://localhost/one
-* http://localhost/add?var1=1&var2=2
-* http://localhost/name/israelh
-* http://localhost/name/hello
+* http://localhost:8080/one
+* http://localhost:8080/add?var1=1&var2=2
+* http://localhost:8080/name/israelh
+* http://localhost:8080/name/hello

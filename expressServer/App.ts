@@ -48,9 +48,9 @@ class App {
         console.log('var1:' + query.var1);
         console.log('var2:' + query.var2);
 
-        let value1: number = query.var1;
-        let value2: number = query.var2;
-        let sum: number = value1 + value2;
+         let value1: number = parseInt(query.var1);
+         let value2: number = parseInt(query.var2);
+         let sum: number = value1 + value2;
         
         //var sum = query.var1 + query.var2;
         var msg = 'addition of ' + query.var1 + ' plus ' + query.var2 + ' equals ' + sum;
@@ -96,4 +96,4 @@ class App {
 
 }
 
-export default new App().express;
+export {App};

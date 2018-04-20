@@ -37,8 +37,8 @@ var App = /** @class */ (function () {
             var query = urlParts.query;
             console.log('var1:' + query.var1);
             console.log('var2:' + query.var2);
-            var value1 = query.var1;
-            var value2 = query.var2;
+            var value1 = parseInt(query.var1);
+            var value2 = parseInt(query.var2);
             var sum = value1 + value2;
             //var sum = query.var1 + query.var2;
             var msg = 'addition of ' + query.var1 + ' plus ' + query.var2 + ' equals ' + sum;
@@ -69,4 +69,4 @@ var App = /** @class */ (function () {
     };
     return App;
 }());
-exports["default"] = new App().express;
+exports.App = App;
