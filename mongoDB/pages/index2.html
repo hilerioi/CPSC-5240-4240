@@ -1,0 +1,135 @@
+<html>
+	<head>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	</head>
+	</head>
+	<body onload="initXHR2()">
+		<div class="container">
+
+		  <!-- Static navbar -->
+		  <nav class="navbar navbar-default">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+				<a class="navbar-brand" href="javascript:initXHR('home')">To Do</a>
+			  </div>
+			  <div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+				  <li><a href="#">Home</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				  <li><a href="#">Login</a></li>
+				</ul>
+			  </div><!--/.nav-collapse -->
+			</div><!--/.container-fluid -->
+		  </nav>
+		  
+		<div id="home">
+		  <!-- Main component for a primary marketing message or call to action -->
+		  <div class="jumbotron">
+			<h1>Type of Transportation Vehicles</h1>
+			<p>The following is a list of various methods of transportation and their speeds.</p>
+			<p>
+			  <a class="btn btn-lg btn-primary" href="javascript:initXHR2()" role="button">View</a>
+			</p>
+		  </div>
+		</div>
+		
+		<div id="transport">
+		
+		</div>
+
+		<div id="gList" style="display:none;">
+			<div class="panel panel-default">
+			  <!-- Default panel contents -->
+			  <div class="panel-heading"> 
+				  <h3>Grocery List</h3>
+				  <div>
+					<a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+					<a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+					<a href="#"><span class="glyphicon glyphicon-ok"></span></a>
+				  </div>
+			  </div>
+				<!-- Table -->
+				<table class="table" style="font-size:10pt;">
+					<thead>
+						<tr>
+							<th>Items</th>
+							<th width="5%">Shared</th>
+							<th width="5%">Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Pick up 2 cans of tomoate</td>
+							<td><span class="badge">N</span></td>
+							<td>
+								<div class="input-group">
+								  <span class="input-group-addon" style="border-style:none;">
+									<input type="checkbox">
+								  </span>
+								</div>  
+							</td>
+						</tr>
+						<tr>
+							<td>Pick up 3 onions</td>
+							<td><span class="badge">N</span></td>
+							<td>
+								<div class="input-group">
+								  <span class="input-group-addon" style="border-style:none;">
+									<input type="checkbox">
+								  </span>
+								</div>  
+							</td>
+						</tr>
+						<tr>
+							<td>Pick up 1 box of spaghetti</td>
+							<td><span class="badge">N</span></td>
+							<td>
+								<div class="input-group">
+								  <span class="input-group-addon" style="border-style:none;">
+									<input type="checkbox">
+								  </span>
+								</div>  
+							</td>
+						</tr>
+						<tr>
+							<td>Pick up 1 (3 litter) Coke</td>
+							<td><span class="badge">N</span></td>
+							<td>
+								<div class="input-group">
+								  <span class="input-group-addon" style="border-style:none;">
+									<input type="checkbox">
+								  </span>
+								</div>  
+							</td>
+						</tr>
+						<tr>
+							<td>Cook recipe http://recipe.com/spaghetti</td>
+							<td><span class="badge">israelh</span></td>
+							<td>
+								<div class="input-group">
+								  <span class="input-group-addon" style="border-style:none;">
+									<input type="checkbox">
+								  </span>
+								</div>  
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		</div> <!-- /container -->
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	</body>
+</html>

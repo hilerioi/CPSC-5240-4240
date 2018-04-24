@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	</head>
+	</head>
+	<body onload="initXHR2()">
+		<div class="container">
+
+		  <!-- Static navbar -->
+		  <nav class="navbar navbar-default">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+				<a class="navbar-brand" href="javascript:initXHR('home')">To Do</a>
+			  </div>
+			  <div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+				  <li><a href="#">Home</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				  <li><a href="#">Login</a></li>
+				</ul>
+			  </div><!--/.nav-collapse -->
+			</div><!--/.container-fluid -->
+		  </nav>
+		  
+		<div id="home">
+		  <!-- Main component for a primary marketing message or call to action -->
+		  <div class="jumbotron">
+			<h1>Type of Transportation Vehicles</h1>
+			<p>The following is a list of various methods of transportation and their speeds.</p>
+			<p>
+			  <a class="btn btn-lg btn-primary" href="javascript:initXHR2()" role="button">View</a>
+			</p>
+		  </div>
+		</div>
+		
+		<div>
+		
+            <form action="/form" method="post">
+                First name:<br>
+                <input type="text" name="firstname" value="Mickey"><br>
+                Last name:<br>
+                <input type="text" name="lastname" value="Mouse"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+
+            <div>
+
+            </div>
+        </div>
+
+		</div> <!-- /container -->
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	</body>
+</html>

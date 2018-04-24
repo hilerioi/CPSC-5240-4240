@@ -1,0 +1,1 @@
+mongo --port 3000 --authenticationDatabase admin
