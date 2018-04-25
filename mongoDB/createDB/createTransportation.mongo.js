@@ -4,20 +4,20 @@ collection = db.getCollection("carCollection")
 
 collection.insert(
 {
-	vehicle: "camaro",
+	vehicle: "prius",
 	speed: "120mph",
 }
 )
 
 collection.insert(
 {
-	vehicle: "ferrari",
+	vehicle: "porsche",
 	speed: "180mph",
 }
 )
 collection.insert(
 {
-	vehicle: "spacecraft",
-	speed: "500mph",
+	vehicle: "spaceship",
+	speed: "400mph",
 }
 )

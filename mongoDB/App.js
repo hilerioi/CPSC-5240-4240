@@ -5,7 +5,6 @@ var logger = require("morgan");
 var url = require("url");
 var bodyParser = require("body-parser");
 var MongoClient = require('mongodb').MongoClient;
-var assert = require('assert');
 var Q = require('q');
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
@@ -13,7 +12,7 @@ var App = /** @class */ (function () {
     function App() {
         this.mongoDBConnection = 'mongodb://dbAdmin/test@localhost:3000/classSample';
         this.dbConnection = null;
-        this.express = express();
+        this.expressApp = express();
         this.middleware();
         this.openDbConnection();
         this.routes();
@@ -29,9 +28,9 @@ var App = /** @class */ (function () {
     };
     // Configure Express middleware.
     App.prototype.middleware = function () {
-        this.express.use(logger('dev'));
-        this.express.use(bodyParser.json());
-        this.express.use(bodyParser.urlencoded({ extended: false }));
+        this.expressApp.use(logger('dev'));
+        this.expressApp.use(bodyParser.json());
+        this.expressApp.use(bodyParser.urlencoded({ extended: false }));
     };
     App.prototype.accessTransportation = function (res, query) {
         var deferred = Q.defer();
@@ -82,9 +81,9 @@ var App = /** @class */ (function () {
             console.log('The param value is: ' + value);
             next();
         });
-        this.express.use('/', router);
-        this.express.use('/images', express.static(__dirname + '/img'));
-        this.express.use('/', express.static(__dirname + '/pages'));
+        this.expressApp.use('/', router);
+        this.expressApp.use('/images', express.static(__dirname + '/img'));
+        this.expressApp.use('/', express.static(__dirname + '/pages'));
     };
     return App;
 }());
