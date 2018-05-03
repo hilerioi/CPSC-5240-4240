@@ -1,0 +1,35 @@
+{
+	"name": "School Supply List",
+	"tasks":[
+		{
+		"description": "Pick drawing boards from friend",
+		"id": "1",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "Buy pencils, pens, and notebooks from Staples",
+		"id": "2",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "Go to the MS Store to buy a new Surface 3",
+		"id": "3",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "Pick up a printer at Frys",
+		"id": "4",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "Get a couple of XBox Games to relax",
+		"id": "5",
+		"shared": "N",
+		"status": "I"
+		}
+	]
+}

@@ -1,0 +1,16 @@
+<h4 class="panel-heading" style="background-color:#337ab7" >
+  <a style="color:white" [routerLink] = "['/list/', index+1]">{{index+1}} - {{list.name}}</a>
+</h4>
+
+<div class="panel-body">
+<p>{{list.description}}</p>
+</div>
+
+<table class="table" style="font-size:10pt;">
+  <tbody>
+    <tr>
+      <td>Due: <span>{{list.due}}</span></td>
+      <td align="right">Items: <span class="badge">{{list.items}}</span></td>
+    </tr>
+  </tbody>
+</table>
