@@ -1,0 +1,31 @@
+{
+  "name": "SampleMocha",
+  "version": "0.2.0",
+  "author": "Israel Hilerio <hilerioi@seattleu.edu>",
+  "description": "A simple mocha test",
+  "contributors": [
+    {
+      "name": "Israel Hilerio",
+      "email": "hilerioi@seattleu.edu"
+    }
+  ],
+  "main": "./server.js",
+  "keywords": [
+    "azure",
+    "boilerplate",
+    "express"
+  ],
+  "dependencies": {
+    "assert": "*",
+    "async": "^2.6.1",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "mocha": "^5.2.0",
+    "q": "^1.5.1"
+  },
+  "noAnalyze": true,
+  "license": "Apache",
+  "engines": {
+    "node": ">=0.12.2"
+  }
+}

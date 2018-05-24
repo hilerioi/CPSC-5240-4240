@@ -1,0 +1,48 @@
+npm uninstall -g @angular/cli
+npm cache clean
+npm install -g @angular/cli
+
+
+ng new social-app
+//generates the app, module, and bootstrap component
+
+cd social-app
+ng serve
+
+Use browser to go to: http://localhost:4200/
+
+
+ng g component welcome
+//creates dir with all parts of welcome
+//updates the module file
+
+ng g component topics
+cd topics
+ng g component topic-entry
+
+cd ..
+ng g component posts
+cd posts
+ng g component post-entry
+
+
+ng g service social
+//generate service skeleton
+
+
+ng g class app-route
+//use this class to create the routing information
+//populate routing information on the new class
+
+modify the app.component class to add the <router-outlet> tag
+
+modify the module class to add the service and router classes
+update the [providers: ] info with the service import
+update the [imports: ] info with the router import
+
+rename the selectors because the cli adds the prefix of "app-" to all of the created components
+
+remember not to add elements inside the <p> element.
+
+
+
