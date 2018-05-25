@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="javascript:initXHR('home')">To Do</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="#/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Home</a></li>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">List<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="/lists/new/">Create</a></li>
+                <li><a href="/lists">Active</a></li>
+                <li><a href="#">Disabled</a></li>
+            </ul>
+            </li>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Shared<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Active</a></li>
+                <li><a href="#">Pending</a></li>
+            </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Login</a></li>
+        </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+<router-outlet></router-outlet>
