@@ -8,20 +8,26 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ListsComponent } from './lists/lists.component';
 import { ListTableComponent } from './lists/list-table/list-table.component';
 import { ListsService } from './list-service.service';
+import { ListComponent } from './list/list.component';
+import { ItemsTableComponent } from './list/items-table/items-table.component';
+import { routing } from './app.routing';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
     ListsComponent,
-    ListTableComponent
+    ListTableComponent,
+    ListComponent,
+    ItemsTableComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [ListsService ],
-  bootstrap: [ListsComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
