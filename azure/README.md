@@ -1,0 +1,1 @@
+This directory contains one express servers with a deployment directory that contains the angular deployment code generated from the "ng build --prod".  It loads data from a mongodb on the cloud.
