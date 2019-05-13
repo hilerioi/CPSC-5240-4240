@@ -1,11 +1,7 @@
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs'; ///add/operator/map';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
 import { ListsService } from '../list-service.service';
-import ITaskModelAngular from '../share/ITaskModelAngular';
-import IListModelAngular from '../share/IListModelAngular';
 import Item from '../share/Item';
 
 @Component({
@@ -17,24 +13,19 @@ import Item from '../share/Item';
 
 export class ListComponent implements OnInit {
   listId: string;
-  listItems: Item; // ITaskModelAngular[];
+  private listObservable: Observable<Item>;
+  private listItems: Item;
   name: string;
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location,
     private list$: ListsService
   ) { 
     this.listId = route.snapshot.params['id'];
-    list$.getItems(this.listId)
-    .subscribe(
-      result => {
-        this.listItems = result.tasks;
-        this.name = result.name;
-      },
-      () => {},
-      () => {}
-    );
+    this.list$.getItems(this.listId).subscribe((res: Item) => {
+      this.name = res.name;
+      this.listItems = res;
+    });
   }
 
   ngOnInit():void {}

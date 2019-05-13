@@ -1,0 +1,36 @@
+{
+	"name": "Grocery List",
+	"tasks":
+	[ 
+		{
+		"description": "Pick up 2 cans of tomato",
+		"id": "1",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "Pick up 2 onions",
+		"id": "2",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "Pick up 1 box of spagetti",
+		"id": "3",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "Pick up 1 (3 litter) Coke",
+		"id": "4",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "Cook recipe http://recipe.com/spagetti",
+		"id": "5",
+		"shared": "israelh",
+		"status": "I"
+		}
+	]
+}

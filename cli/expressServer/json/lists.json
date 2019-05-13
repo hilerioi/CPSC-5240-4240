@@ -1,0 +1,29 @@
+[ 
+	 {
+	  "name": "Grocery List",
+	  "description": "Grocery List for home.",
+	  "id": "1",
+	  "due": "04-27-2015",
+	  "state": "A",
+	  "ownwer": "israelh",
+	  "items": "5"
+	 },
+	 {
+	  "name": "Car Shopping List",
+	  "description": "Cars I need to try before buying a car.",
+	  "id": "2",
+	  "due": "05-27-2015",
+	  "state": "A",
+	  "ownwer": "israelh",
+	  "items": "4"
+	 },
+	 {
+	  "name": "School Supply List",
+	  "description": "Supply list for school classes.",
+	  "id": "3",
+	  "due": "08-27-2015",
+	  "state": "A",
+	  "ownwer": "israelh",
+	  "items": "7"
+	 }
+]

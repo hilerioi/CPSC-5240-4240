@@ -5,7 +5,8 @@
 		</div>
 		<br>
 		<div>
-			<div class="panel panel-heading" style="border-width: 1px; border-style:solid; border-color:gray;" *ngFor="let result of lists; let i = index">
+			<div class="panel panel-heading" style="border-width: 1px; border-style:solid; border-color:gray;" 
+			*ngFor="let result of (listsObservable | async); let i = index">
 				<!-- Default panel contents -->
 
 				<list-table [list]="result" [index]="i"></list-table>

@@ -1,5 +1,7 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
 import { ListsService } from '../list-service.service';
+import IListModelAngular from '../share/IListModelAngular';
 
 @Component({
   selector: 'app-lists',
@@ -7,16 +9,12 @@ import { ListsService } from '../list-service.service';
   styleUrls: ['./lists.component.css']
 })
 export class ListsComponent implements OnInit {
-  lists: any;
+  listsObservable: Observable<IListModelAngular[]>;
+
   @Input() listNumber: number[] = [1,2,3,4];
 
-  constructor(list$: ListsService) { 
-    list$.getListsIndex()
-    .subscribe(
-      result => this.lists = result,
-      () => {},
-      () => console.log('REST call:' + this.lists)
-    );
+  constructor(list$: ListsService) {
+    this.listsObservable = list$.getListsIndex();
   }
 
   ngOnInit() {

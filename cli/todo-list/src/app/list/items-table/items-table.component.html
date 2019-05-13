@@ -7,8 +7,8 @@
           <th width="5%">Status</th>
       </tr>
   </thead>
-  <tbody>
-      <tr *ngFor="let result of items; let i = index">
+  <tbody *ngIf="items != null">
+      <tr *ngFor="let result of items.tasks ; let i = index">
           <td>{{i+1}}. {{result.description}}</td>
           <td>{{result.taskId}}<span class="badge">{{result.shared}}</span></td>
           <td>
