@@ -1,0 +1,21 @@
+<h3 class="panel-heading">Active Lists</h3>
+  
+<div class="panel panel-default"
+*ngFor="let list of lists; let i = index">
+  <!-- Default panel contents -->
+  <h4 class="panel-heading"><a href="index3.html">{{i+1}}. {{list.name}}</a></h4>
+  <div class="panel-body">
+  <p>{{list.description}}</p>
+  </div>
+
+  <!-- Table -->
+  <table class="table" style="font-size:10pt;">
+    <tbody>
+      <tr>
+        <td>Due: <span>{{list.due}}</span></td>
+        <td align="right">Items: <span class="badge">{{list.items}}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
