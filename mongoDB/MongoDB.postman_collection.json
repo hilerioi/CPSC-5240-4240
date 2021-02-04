@@ -76,7 +76,12 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{vehicle: \"tesla\", speed: \"160\"}"
+					"raw": "{\"vehicle\": \"tesla\", \"speed\" : \"160\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8080/add",
