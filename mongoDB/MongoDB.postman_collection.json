@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "5796327c-776a-4689-94ef-1d40edf40831",
+		"name": "MongoDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Retrieve All Entries from DB",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Some Entries using Query String",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/search?var1=120",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "var1",
+							"value": "120"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve Some Entries using path variables",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/vehicle/camaro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicle",
+						"camaro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Entry to DB",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{vehicle: \"tesla\", speed: \"160\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Entry from DB",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\": \"\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/remove",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"remove"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
