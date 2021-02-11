@@ -1,15 +1,15 @@
-import * as path from 'path';
+//import * as path from 'path';
 import * as express from 'express';
 import * as logger from 'morgan';
-import * as mongodb from 'mongodb';
-import * as url from 'url';
+//import * as mongodb from 'mongodb';
+//import * as url from 'url';
 import * as bodyParser from 'body-parser';
 //var MongoClient = require('mongodb').MongoClient;
 //var Q = require('q');
 
 import {ListModel} from './model/ListModel';
 import {TaskModel} from './model/TaskModel';
-import {DataAccess} from './DataAccess';
+//import {DataAccess} from './DataAccess';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -25,7 +25,7 @@ class App {
     this.expressApp = express();
     this.middleware();
     this.routes();
-    this.idGenerator = 100;
+    this.idGenerator = 102;
     this.Lists = new ListModel();
     this.Tasks = new TaskModel();
   }
@@ -49,7 +49,7 @@ class App {
     router.post('/app/list/', (req, res) => {
         console.log(req.body);
         var jsonObj = req.body;
-        jsonObj.listId = this.idGenerator;
+        //jsonObj.listId = this.idGenerator;
         this.Lists.model.create([jsonObj], (err) => {
             if (err) {
                 console.log('object creation failed');
@@ -68,6 +68,11 @@ class App {
     router.get('/app/list/', (req, res) => {
         console.log('Query All list');
         this.Lists.retrieveAllLists(res);
+    });
+
+    router.get('/app/listcount', (req, res) => {
+      console.log('Query the number of list elements in db');
+      this.Lists.retrieveListCount(res);
     });
 
     this.expressApp.use('/', router);

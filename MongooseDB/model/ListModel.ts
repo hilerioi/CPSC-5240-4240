@@ -37,5 +37,15 @@ class ListModel {
             response.json(itemArray) ;
         });
     }
+
+    public retrieveListCount(response:any): any {
+        console.log("retrieve List Count ...");
+        var query = this.model.estimatedDocumentCount();
+        query.exec( (err, numberOfLists) => {
+            console.log("numberOfLists: " + numberOfLists);
+            response.json(numberOfLists) ;
+        });
+    }
+
 }
 export {ListModel};
