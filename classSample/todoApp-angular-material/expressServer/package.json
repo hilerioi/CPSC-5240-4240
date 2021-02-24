@@ -1,0 +1,26 @@
+{
+  "name": "expressserver",
+  "version": "1.0.0",
+  "description": "This directory contains one express servers: * AppServer.ts - express web server with parameter support * App.ts - express server class that is constructed via AppServer.ts",
+  "main": "AppServer.js",
+  "dependencies": {
+    "@types/body-parser": "^1.17.0",
+    "@types/express": "^4.16.1",
+    "@types/morgan": "^1.7.35",
+    "@types/node": "^9.6.48",
+    "body-parser": "^1.19.0",
+    "debug": "^2.6.3",
+    "express": "^4.17.0",
+    "morgan": "^1.9.1",
+    "npm": "^5.10.0",
+    "path": "^0.12.7",
+    "typescript": "^2.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node AppServer.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

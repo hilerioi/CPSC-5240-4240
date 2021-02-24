@@ -1,0 +1,36 @@
+{
+	"name": "Car Shopping List",
+	"tasks":
+	[ 
+		{
+		"description": "Test drive a Porsche Boxter",
+		"id": "1",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "To be gas consious, test drive a Tesla",
+		"id": "2",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "Ask your friend to give you a ride in his Lotus",
+		"id": "3",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "Ask to barrow the Mustang from my mom :-)",
+		"id": "4",
+		"shared": "N",
+		"status": "I"
+		},
+		{
+		"description": "Rent a Corvette",
+		"id": "5",
+		"shared": "",
+		"status": "I"
+		}
+	]
+}
