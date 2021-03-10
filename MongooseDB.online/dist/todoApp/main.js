@@ -132,7 +132,7 @@ HomePageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div", 14);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "h1");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, "To Do List");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, "To Do List Part 6");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "p");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](44, "Keep track of all of things you need to do by creating lists and sharing items with friends.");
@@ -176,6 +176,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class ListServiceService {
+    //path:string = 'api/list';
     constructor(http) {
         this.http = http;
         this.hostUrl = '/'; //'http://localhost:8080/';
