@@ -44,7 +44,7 @@ class App {
         var id = req.params.listId;
         console.log('Query single list with id: ' + id);
         this.Tasks.retrieveTasksCount(res, {listId: id});
-    });
+    }); 
 
     router.post('/app/list/', (req, res) => {
         console.log(req.body);
