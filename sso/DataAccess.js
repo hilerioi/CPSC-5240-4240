@@ -1,9 +1,10 @@
 "use strict";
 exports.__esModule = true;
+exports.DataAccess = void 0;
 var Mongoose = require("mongoose");
 var DataAccess = /** @class */ (function () {
     function DataAccess() {
-        DataAccess.connect();
+        //DataAccess.connect();
     }
     DataAccess.connect = function () {
         if (this.mongooseInstance)
@@ -15,8 +16,10 @@ var DataAccess = /** @class */ (function () {
         this.mongooseInstance = Mongoose.connect(this.DB_CONNECTION_STRING);
         return this.mongooseInstance;
     };
-    //static DB_CONNECTION_STRING:string = 'mongodb://dbAdmin:test@localhost:3000/toDoSample?authSource=admin';
-    DataAccess.DB_CONNECTION_STRING = 'mongodb://dbUser:TestAccount@ds048319.mlab.com:48319/todoclasssample';
+    //    static DB_CONNECTION_STRING:string = 'mongodb://dbAdmin:test@localhost:3000/toDoSample?authSource=admin';
+    //    static DB_CONNECTION_STRING:string = 'mongodb+srv://test:test@cluster0.wvyas.azure.mongodb.net/todoappsu3?retryWrites=true&w=majority&authSource=admin';
+    //    static DB_CONNECTION_STRING:string = 'mongodb+srv://test:dbtest@cluster0.wvyas.azure.mongodb.net/todoappsu3?retryWrites=true&w=majority';
+    DataAccess.DB_CONNECTION_STRING = 'mongodb+srv://test:dbtest@cluster0.wvyas.azure.mongodb.net/toDoSample?retryWrites=true&w=majority';
     return DataAccess;
 }());
 exports.DataAccess = DataAccess;

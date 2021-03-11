@@ -3,11 +3,12 @@ import Mongoose = require("mongoose");
 class DataAccess {
     static mongooseInstance: any;
     static mongooseConnection: Mongoose.Connection;
-    //static DB_CONNECTION_STRING:string = 'mongodb://dbAdmin:test@localhost:3000/toDoSample?authSource=admin';
-    static DB_CONNECTION_STRING:string ='mongodb://dbUser:TestAccount@ds048319.mlab.com:48319/todoclasssample'
-
+//    static DB_CONNECTION_STRING:string = 'mongodb://dbAdmin:test@localhost:3000/toDoSample?authSource=admin';
+//    static DB_CONNECTION_STRING:string = 'mongodb+srv://test:test@cluster0.wvyas.azure.mongodb.net/todoappsu3?retryWrites=true&w=majority&authSource=admin';
+//    static DB_CONNECTION_STRING:string = 'mongodb+srv://test:dbtest@cluster0.wvyas.azure.mongodb.net/todoappsu3?retryWrites=true&w=majority';
+    static DB_CONNECTION_STRING:string = 'mongodb+srv://test:dbtest@cluster0.wvyas.azure.mongodb.net/toDoSample?retryWrites=true&w=majority';
     constructor () {
-        DataAccess.connect();
+        //DataAccess.connect();
     }
     
     static connect (): Mongoose.Connection {
