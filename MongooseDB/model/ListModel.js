@@ -9,7 +9,6 @@ var ListModel = /** @class */ (function () {
     this.createSchema();
     this.createModel();
   }
-  // hello
   ListModel.prototype.createSchema = function () {
     this.schema = new Mongoose.Schema(
       {
