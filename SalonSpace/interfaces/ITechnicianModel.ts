@@ -1,6 +1,6 @@
 import Mongoose = require("mongoose");
 
-interface ITechniciansModel extends Mongoose.Document {
+interface ITechnicianModel extends Mongoose.Document {
     registeredUserID: number;
     technicianID: number;
     skillListID: number;
@@ -8,4 +8,4 @@ interface ITechniciansModel extends Mongoose.Document {
     salonListID: number;
     languageListID: number;
 }
-export {ITechniciansModel};
+export {ITechnicianModel};
