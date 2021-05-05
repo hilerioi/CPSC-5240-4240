@@ -169,3 +169,20 @@ clientCollection.insert(
 )
 
 // DISCOUNTS
+db.createCollection('clients')
+clientCollection = db.getCollection("clients")
+clientCollection.remove({})
+clientCollection.insert(
+{
+	discountID: 1,
+    value: 5,
+    used: False
+}
+)
+clientCollection.insert(
+{
+	discountID: 2,
+    value: 6,
+    used: True
+}
+)
