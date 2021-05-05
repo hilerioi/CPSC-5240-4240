@@ -1,4 +1,6 @@
 db = db.getSiblingDB('SalonSpace')
+
+// SKILLS
 db.createCollection('skills')
 skillsCollection = db.getCollection("skills")
 skillsCollection.remove({})
@@ -16,6 +18,8 @@ skillsCollection.insert(
 	skillListID: [1]
 }
 )
+
+// SALONS
 db.createCollection('salons')
 salonsCollection = db.getCollection("salons")
 salonsCollection.remove({})
@@ -35,6 +39,8 @@ salonsCollection.insert(
 	salonListID: [2]
 }
 )
+
+// REGISTERED USERS
 db.createCollection('registeredUsers')
 usersCollection = db.getCollection("registeredUsers")
 usersCollection.remove({})
@@ -58,6 +64,8 @@ usersCollection.insert(
 	loginStatus: false
 }
 )
+
+// TECHNICIANS
 db.createCollection('technicians')
 techniciansCollection = db.getCollection("technicians")
 techniciansCollection.remove({})
@@ -83,6 +91,8 @@ techniciansCollection.insert(
 	languageListID: 2
 }
 )
+
+// LANGUAGES
 db.createCollection('languages')
 languagesCollection = db.getCollection("languages")
 languagesCollection.remove({})
@@ -107,6 +117,8 @@ languagesCollection.insert(
 	languageListID:[]
 }
 )
+
+// RATINGS
 db.createCollection('ratings')
 ratingsCollection = db.getCollection("ratings")
 ratingsCollection.remove({})
@@ -134,3 +146,7 @@ ratingsCollection.insert(
 	ratingListID: [2]
 }
 )
+
+// CLIENTS
+
+// DISCOUNTS
