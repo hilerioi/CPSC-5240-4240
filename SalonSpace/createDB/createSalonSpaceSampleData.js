@@ -134,3 +134,22 @@ ratingsCollection.insert(
 	ratingListID: [2]
 }
 )
+db.createCollection('clients')
+clientCollection = db.getCollection("clients")
+clientCollection.remove({})
+clientCollection.insert(
+{
+	registeredUserID: 1,
+    points: 100,
+    ratingListID: 1,
+    discountListID: 1
+}
+)
+clientCollection.insert(
+{
+	registeredUserID: 2,
+    points: 150,
+    ratingListID: 2,
+    discountListID: 2
+}
+)
