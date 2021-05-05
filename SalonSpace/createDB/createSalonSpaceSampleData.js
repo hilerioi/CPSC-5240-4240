@@ -149,40 +149,40 @@ ratingsCollection.insert(
 
 // CLIENTS
 db.createCollection('clients')
-clientCollection = db.getCollection("clients")
-clientCollection.remove({})
-clientCollection.insert(
-{
-	registeredUserID: 1,
-    points: 100,
-    ratingListID: 1,
-    discountListID: 1
-}
-)
-clientCollection.insert(
-{
-	registeredUserID: 2,
-    points: 150,
-    ratingListID: 2,
-    discountListID: 2
-}
+clientsCollection = db.getCollection('clients')
+clientsCollection.remove({})
+clientsCollection.insert(
+    {
+        registeredUserID: 3,
+        points: 42,
+        ratingListID: [2, 3],
+        discountListID: [1]
+    }
 )
 
 // DISCOUNTS
-db.createCollection('clients')
-clientCollection = db.getCollection("clients")
-clientCollection.remove({})
-clientCollection.insert(
-{
-	discountID: 1,
-    value: 5,
-    used: False
-}
+db.createCollection('discounts')
+discountsCollection = db.getCollection('discounts')
+discountsCollection.remove({})
+discountsCollection.insert(
+    {
+        discountID: 1,
+        value: 10.00,
+        used: false
+    }
 )
-clientCollection.insert(
-{
-	discountID: 2,
-    value: 6,
-    used: True
-}
+discountsCollection.insert(
+    {
+        discountID: 2,
+        value: 15.00,
+        used: false
+    }
 )
+discountsCollection.insert(
+    {
+        discountID: 3,
+        value: 5.00,
+        used: true
+    }
+)
+
