@@ -206,18 +206,18 @@ class App {
         this.idGenerator++;
     });
 
-    router.get('/app/Discount/', (req, res) => {
+    router.get('/app/discount/', (req, res) => {
         console.log('Query all Discounts');
         this.Discounts.retrieveAllDiscounts(res);
     });
     
-    router.get('/app/Discount/:DiscountId', (req, res) => {
+    router.get('/app/discount/:DiscountId', (req, res) => {
       var id = req.params.DiscountId;
       console.log('Query single registered Discount with id: ' + id);
       this.Discounts.retrieveDiscountDetails(res, {discountID: id});
     });
 
-    router.get('/app/DiscountCount', (req, res) => {
+    router.get('/app/discountCount', (req, res) => {
       console.log('Query the number of Discounts in db');
       this.Discounts.retrieveDiscountCount(res);
     });

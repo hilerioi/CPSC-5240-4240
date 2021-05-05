@@ -163,16 +163,16 @@ var App = /** @class */ (function () {
             res.send(_this.idGenerator.toString());
             _this.idGenerator++;
         });
-        router.get('/app/Discount/', function (req, res) {
+        router.get('/app/discount/', function (req, res) {
             console.log('Query all Discounts');
             _this.Discounts.retrieveAllDiscounts(res);
         });
-        router.get('/app/Discount/:DiscountId', function (req, res) {
+        router.get('/app/discount/:DiscountId', function (req, res) {
             var id = req.params.DiscountId;
             console.log('Query single registered Discount with id: ' + id);
             _this.Discounts.retrieveDiscountDetails(res, { discountID: id });
         });
-        router.get('/app/DiscountCount', function (req, res) {
+        router.get('/app/discountCount', function (req, res) {
             console.log('Query the number of Discounts in db');
             _this.Discounts.retrieveDiscountCount(res);
         });
