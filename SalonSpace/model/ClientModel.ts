@@ -19,10 +19,10 @@ class ClientModel {
     public createSchema(): void {
         this.schema = new Mongoose.Schema(
             {
-                registeredUserID: number;
-                points: number;
-                ratingListID: number;
-                discountListID: number;
+                registeredUserID: Number,
+                points: Number,
+                ratingListID: Number,
+                discountListID: Number
             }, {collection: 'clients'}
         );
     }
@@ -31,7 +31,7 @@ class ClientModel {
         this.model = mongooseConnection.model<IClientModel>("Clients", this.schema);
     }
 
-    public retreiveAllClients(response:any): any {
+    public retrieveAllClients(response:any): any {
         var query = this.model.find({});
         query.exec( (err, clientsArray) => {
             response.json(clientsArray) ;
@@ -41,8 +41,8 @@ class ClientModel {
     
     public retrieveClientDetails(response:any, filter:Object) {
         var query = this.model.findOne(filter);
-        query.exec( (err, clientArray) => {
-            response.json(clientArray);
+        query.exec( (err, client) => {
+            response.json(client);
         });
     }
 

@@ -11,16 +11,16 @@ var ClientModel = /** @class */ (function () {
     }
     ClientModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
-            registeredUserID: number,
-            points: number,
-            ratingListID: number,
-            discountListID: number
+            registeredUserID: Number,
+            points: Number,
+            ratingListID: Number,
+            discountListID: Number
         }, { collection: 'clients' });
     };
     ClientModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("Clients", this.schema);
     };
-    ClientModel.prototype.retreiveAllClients = function (response) {
+    ClientModel.prototype.retrieveAllClients = function (response) {
         var query = this.model.find({});
         query.exec(function (err, clientsArray) {
             response.json(clientsArray);
@@ -28,8 +28,8 @@ var ClientModel = /** @class */ (function () {
     };
     ClientModel.prototype.retrieveClientDetails = function (response, filter) {
         var query = this.model.findOne(filter);
-        query.exec(function (err, clientArray) {
-            response.json(clientArray);
+        query.exec(function (err, client) {
+            response.json(client);
         });
     };
     ClientModel.prototype.retrieveClientCount = function (response) {
