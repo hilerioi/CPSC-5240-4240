@@ -1,6 +1,6 @@
 import Mongoose = require("mongoose");
 
-interface IRegisteredUsersModel extends Mongoose.Document {
+interface IRegisteredUserModel extends Mongoose.Document {
     registeredUserID: number;
     email: string;
     firstName: string;
@@ -8,4 +8,4 @@ interface IRegisteredUsersModel extends Mongoose.Document {
     password: string;
     loginStatus: boolean;
 }
-export {IRegisteredUsersModel};
+export {IRegisteredUserModel};

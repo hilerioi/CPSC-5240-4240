@@ -15,24 +15,26 @@ To execute the server db and then the node server with the following commands:
 0. md db
 
 //Starts the DB server on port 3000
-1. start.toDoSample.cmd
+1. .\start.toDoSample.cmd
 
 //populate the DB server with sample data
-2. startdbClient.toDoSample.cmd
->load ('createDB/createToDoSampleData.js');
+2. .\startdbClient.toDoSample2.cmd
+>load ('createDB/createSalonSpaceSampleData.js');
 >load ('createDB/createAdminUser.js');
 >exit
 
 //install npm packages
-3. npm install
+3. .\startdbClient.toDoSample.cmd
+
+4. npm install
 
 //Compile Node/Express Server.  You may need to go to all subdirectories and compile the ts files.
-4. tsc AppServre.ts
+4. npx tsc AppServer.ts
 
 //Execute Node/Express server on port 8080
 5. node AppServer.js 
 
 To test server #3, try the following URL on the browser, while the server is running:
-* http://localhost:8080/
-* http://localhost:8080/app/list
-* http://localhost:8080/app/list/1
+* http://localhost:8080/app/technician/
+* http://localhost:8080/app/salon/
+* http://localhost:8080/app/registeredUser/

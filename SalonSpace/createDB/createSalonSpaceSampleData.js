@@ -1,15 +1,15 @@
 db = db.getSiblingDB('SalonSpace')
 db.createCollection('skills')
-skillsDB = db.getCollection("skills")
-skillsDB.remove({})
-skillsDB.insert(
+skillsCollection = db.getCollection("skills")
+skillsCollection.remove({})
+skillsCollection.insert(
 {
 	skillID: 1,
 	name: "Manicure",
 	skillListID: [1, 2]
 }
 )
-skillsDB.insert(
+skillsCollection.insert(
 {
 	skillID: 2,
 	name: "Pedicure",
@@ -17,9 +17,9 @@ skillsDB.insert(
 }
 )
 db.createCollection('salons')
-salonsDB = db.getCollection("salons")
-salonsDB.remove({})
-salonsDB.insert(
+salonsCollection = db.getCollection("salons")
+salonsCollection.remove({})
+salonsCollection.insert(
 {
 	salonID: 1,
 	name: "Nails & Spa",
@@ -27,7 +27,7 @@ salonsDB.insert(
 	salonListID: [1]
 }
 )
-salonsDB.insert(
+salonsCollection.insert(
 {
 	salonID: 2,
 	name: "MC Nails",
@@ -36,9 +36,9 @@ salonsDB.insert(
 }
 )
 db.createCollection('registeredUsers')
-usersDB = db.getCollection("registeredUsers")
-usersDB.remove({})
-usersDB.insert(
+usersCollection = db.getCollection("registeredUsers")
+usersCollection.remove({})
+usersCollection.insert(
 {
 	registeredUserID: 1,
 	email: "mamamaya@gmail.com",
@@ -48,7 +48,7 @@ usersDB.insert(
 	loginStatus: false
 }
 )
-usersDB.insert(
+usersCollection.insert(
 {
 	registeredUserID: 2,
 	email: "anyaphong@gmail.com",
@@ -59,9 +59,9 @@ usersDB.insert(
 }
 )
 db.createCollection('technicians')
-techniciansDB = db.getCollection("technicians")
-techniciansDB.remove({})
-techniciansDB.insert(
+techniciansCollection = db.getCollection("technicians")
+techniciansCollection.remove({})
+techniciansCollection.insert(
 {
 	registeredUserID: 1,
 	technicianID: 1,
@@ -71,7 +71,7 @@ techniciansDB.insert(
 	languageListID: 1
 }
 )
-techniciansDB.insert(
+techniciansCollection.insert(
 {
 	registeredUserID: 2,
 	technicianID: 2,
@@ -84,23 +84,23 @@ techniciansDB.insert(
 }
 )
 db.createCollection('languages')
-languagesDB = db.getCollection("languages")
-languagesDB.remove({})
-languagesDB.insert(
+languagesCollection = db.getCollection("languages")
+languagesCollection.remove({})
+languagesCollection.insert(
 {
 	languageID: 1,
 	name: "English",
 	languageListID:[2]
 }
 )
-languagesDB.insert(
+languagesCollection.insert(
 {
 	languageID: 2,
 	name: "Thai",
 	languageListID:[1, 2]
 }
 )
-languagesDB.insert(
+languagesCollection.insert(
 {
 	languageID: 3,
 	name: "Spanish",
@@ -108,9 +108,9 @@ languagesDB.insert(
 }
 )
 db.createCollection('ratings')
-ratingsDB = db.getCollection("ratings")
-ratingsDB.remove({})
-ratingsDB.insert(
+ratingsCollection = db.getCollection("ratings")
+ratingsCollection.remove({})
+ratingsCollection.insert(
 {
 	ratingID: 1,
 	stars: 5,
@@ -118,7 +118,7 @@ ratingsDB.insert(
 	ratingListID: [1]
 }
 )
-ratingsDB.insert(
+ratingsCollection.insert(
 {
 	ratingID: 2,
 	stars: 3,
@@ -126,7 +126,7 @@ ratingsDB.insert(
 	ratingListID: [1]
 }
 )
-ratingsDB.insert(
+ratingsCollection.insert(
 {
 	ratingID: 3,
 	stars: 4,

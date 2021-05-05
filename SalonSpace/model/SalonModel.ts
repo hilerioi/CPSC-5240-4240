@@ -1,6 +1,6 @@
 import Mongoose = require("mongoose");
 import {DataAccess} from '../DataAccess';
-import {ISalonsModel} from '../interfaces/ISalonModel';
+import {ISalonModel} from '../interfaces/ISalonModel';
 
 let mongooseConnection = DataAccess.mongooseConnection;
 let mongooseObj = DataAccess.mongooseInstance;
@@ -19,13 +19,14 @@ class SalonModel {
             {
                 salonID: Number,
                 name: String,
+                address: String,
                 salonListID: Array<Number>()
             }, {collection: 'salons'}
         );
     }
 
     public createModel(): void {
-        this.model = mongooseConnection.model<ISalonsModel>("Salons", this.schema);
+        this.model = mongooseConnection.model<ISalonModel>("Salons", this.schema);
     }
 
     public retreiveAllSalons(response:any): any {
