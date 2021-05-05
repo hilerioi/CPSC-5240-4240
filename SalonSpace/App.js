@@ -11,6 +11,8 @@ var LanguageModel_1 = require("./model/LanguageModel");
 var RegisteredUserModel_1 = require("./model/RegisteredUserModel");
 var SkillModel_1 = require("./model/SkillModel");
 var RatingModel_1 = require("./model/RatingModel");
+var ClientModel_1 = require("./model/ClientModel");
+var DiscountModel_1 = require("./model/DiscountModel");
 //import {DataAccess} from './DataAccess';
 // Creates and configures an ExpressJS web server.
 var App = /** @class */ (function () {
@@ -26,6 +28,8 @@ var App = /** @class */ (function () {
         this.Skills = new SkillModel_1.SkillModel();
         this.Ratings = new RatingModel_1.RatingModel();
         this.Salons = new SalonModel_1.SalonModel();
+        this.Clients = new ClientModel_1.ClientModel();
+        this.Discounts = new DiscountModel_1.DiscountModel();
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
@@ -119,6 +123,58 @@ var App = /** @class */ (function () {
         router.get('/app/skills/', function (req, res) {
             console.log('Query All skills');
             _this.Skills.retreiveAllSkills(res);
+        });
+        // API endpoints for Client
+        router.post('/app/client/', function (req, res) {
+            console.log(req.body);
+            var jsonObj = req.body;
+            //jsonObj.listId = this.idGenerator;
+            _this.Clients.model.create([jsonObj], function (err) {
+                if (err) {
+                    console.log('object creation failed');
+                }
+            });
+            res.send(_this.idGenerator.toString());
+            _this.idGenerator++;
+        });
+        router.get('/app/client/', function (req, res) {
+            console.log('Query all Clients');
+            _this.Clients.retrieveAllClients(res);
+        });
+        router.get('/app/client/:clientId', function (req, res) {
+            var id = req.params.clientId;
+            console.log('Query single registered Client with id: ' + id);
+            _this.Clients.retrieveClientDetails(res, { registeredUserID: id });
+        });
+        router.get('/app/clientCount', function (req, res) {
+            console.log('Query the number of Clients in db');
+            _this.Clients.retrieveClientCount(res);
+        });
+        // API endpoints for Discount
+        router.post('/app/discount/', function (req, res) {
+            console.log(req.body);
+            var jsonObj = req.body;
+            //jsonObj.listId = this.idGenerator;
+            _this.Clients.model.create([jsonObj], function (err) {
+                if (err) {
+                    console.log('object creation failed');
+                }
+            });
+            res.send(_this.idGenerator.toString());
+            _this.idGenerator++;
+        });
+        router.get('/app/Discount/', function (req, res) {
+            console.log('Query all Discounts');
+            _this.Discounts.retrieveAllDiscounts(res);
+        });
+        router.get('/app/Discount/:DiscountId', function (req, res) {
+            var id = req.params.DiscountId;
+            console.log('Query single registered Discount with id: ' + id);
+            _this.Discounts.retrieveDiscountDetails(res, { discountID: id });
+        });
+        router.get('/app/DiscountCount', function (req, res) {
+            console.log('Query the number of Discounts in db');
+            _this.Discounts.retrieveDiscountCount(res);
         });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));

@@ -21,8 +21,8 @@ class ClientModel {
             {
                 registeredUserID: Number,
                 points: Number,
-                ratingListID: Number,
-                discountListID: Number
+                ratingListID: Array<Number>(),
+                discountListID: Array<Number>()
             }, {collection: 'clients'}
         );
     }
