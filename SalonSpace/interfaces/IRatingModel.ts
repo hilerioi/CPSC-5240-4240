@@ -4,6 +4,6 @@ interface IRatingsModel extends Mongoose.Document {
     ratingID: number;
     stars: number;
     text: string;
-    ratingListID: Array<number>;
+    //ratingListID: Array<number>;
 }
 export {IRatingsModel};
