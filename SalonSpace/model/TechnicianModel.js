@@ -14,10 +14,10 @@ var TechnicianModel = /** @class */ (function () {
         this.schema = new Mongoose.Schema({
             registeredUserID: Number,
             technicianId: Number,
-            skillListID: Number,
+            skillList: Array(),
             ratingListID: Number,
             salonListID: Number,
-            languageListID: Number
+            languageList: Array()
         }, { collection: 'technicians' });
     };
     TechnicianModel.prototype.createModel = function () {
