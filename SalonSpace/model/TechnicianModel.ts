@@ -25,10 +25,10 @@ class TechnicianModel {
             {
                 registeredUserID: Number,
                 technicianId: Number,
-                skillListID: Number,
+                skillList: Array<string>(),
                 ratingListID: Number,
                 salonListID: Number,
-                languageListID: Number
+                languageList: Array<string>()
             }, {collection: 'technicians'}
         );
     }
