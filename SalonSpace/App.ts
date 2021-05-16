@@ -156,7 +156,20 @@ class App {
     //     this.Technicians.retreiveAllSkills(res);
     // });
     
-    
+    //API endpoints for ratings 
+
+    // router.post('/app/rating/', (req, res) => {
+    //   console.log(req.body);
+    //   var jsonObj = req.body;
+    //   //jsonObj.listId = this.idGenerator;
+    //   this.Ratings.model.create([jsonObj], (err) => {
+    //       if (err) {
+    //           console.log('object creation failed');
+    //       }
+    //   });
+    //   res.send(this.idGenerator.toString());
+    //   this.idGenerator++;
+    // });
     
 
 

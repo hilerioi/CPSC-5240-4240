@@ -73,10 +73,10 @@ techniciansCollection.insert(
 {
 	registeredUserID: 1,
 	technicianID: 1,
-	skillListID: 1,
-	ratingListID: 1,
-	salonListID: 1,
-	languageListID: 1
+	skillList: ["Manicure", "Pedicure"],
+	ratingListID: [1, 2],
+	salonListID: [1],
+	languageList: ["Vietnamese", "English"]
 }
 )
 techniciansCollection.insert(
@@ -85,38 +85,38 @@ techniciansCollection.insert(
 	technicianID: 2,
 	name: "Anya",
 	age: 30,
-	skillListID: 2,
-	ratingListID: 2,
-	salonListID: 2,
-	languageListID: 2
+	skillListID: ["Shellac", "Pedicure"],
+	ratingListID: [2],
+	salonListID: [2],
+	languageListID: ["Russian", "English"]
 }
 )
 
 // LANGUAGES
-db.createCollection('languages')
-languagesCollection = db.getCollection("languages")
-languagesCollection.remove({})
-languagesCollection.insert(
-{
-	languageID: 1,
-	name: "English",
-	languageListID:[2]
-}
-)
-languagesCollection.insert(
-{
-	languageID: 2,
-	name: "Thai",
-	languageListID:[1, 2]
-}
-)
-languagesCollection.insert(
-{
-	languageID: 3,
-	name: "Spanish",
-	languageListID:[]
-}
-)
+// db.createCollection('languages')
+// languagesCollection = db.getCollection("languages")
+// languagesCollection.remove({})
+// languagesCollection.insert(
+// {
+// 	languageID: 1,
+// 	name: "English",
+// 	languageListID:[2]
+// }
+// )
+// languagesCollection.insert(
+// {
+// 	languageID: 2,
+// 	name: "Thai",
+// 	languageListID:[1, 2]
+// }
+// )
+// languagesCollection.insert(
+// {
+// 	languageID: 3,
+// 	name: "Spanish",
+// 	languageListID:[]
+// }
+// )
 
 // RATINGS
 db.createCollection('ratings')
@@ -127,7 +127,7 @@ ratingsCollection.insert(
 	ratingID: 1,
 	stars: 5,
 	text: "",
-	ratingListID: [1]
+	//ratingListID: [1]
 }
 )
 ratingsCollection.insert(
@@ -135,7 +135,7 @@ ratingsCollection.insert(
 	ratingID: 2,
 	stars: 3,
 	text: "I needed a quick manicure before my date. My mails look great but the service was way too slow.",
-	ratingListID: [1]
+	//ratingListID: [1]
 }
 )
 ratingsCollection.insert(
@@ -143,7 +143,7 @@ ratingsCollection.insert(
 	ratingID: 3,
 	stars: 4,
 	text: "",
-	ratingListID: [2]
+	//ratingListID: [2]
 }
 )
 
