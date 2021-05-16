@@ -27,9 +27,9 @@ var RatingModel = /** @class */ (function () {
         });
     };
     RatingModel.prototype.retreiveRatingsDetails = function (response, filter) {
-        var query = this.model.find(filter);
-        query.exec(function (err, itemArray) {
-            response.json(itemArray);
+        var query = this.model.findOne(filter);
+        query.exec(function (err, rating) {
+            response.json(rating);
         });
     };
     RatingModel.prototype.retrieveAllratingsCount = function (response) {

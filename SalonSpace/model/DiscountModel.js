@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+exports.DiscountModel = void 0;
 var Mongoose = require("mongoose");
 var DataAccess_1 = require("../DataAccess");
 var mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;

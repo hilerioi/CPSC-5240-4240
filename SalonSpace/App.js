@@ -152,58 +152,6 @@ var App = /** @class */ (function () {
             console.log('Query the number of rating elements in db');
             _this.Ratings.retrieveAllratingsCount(res);
         });
-        // API endpoints for Client
-        router.post('/app/client/', function (req, res) {
-            console.log(req.body);
-            var jsonObj = req.body;
-            //jsonObj.listId = this.idGenerator;
-            _this.Clients.model.create([jsonObj], function (err) {
-                if (err) {
-                    console.log('object creation failed');
-                }
-            });
-            res.send(_this.idGenerator.toString());
-            _this.idGenerator++;
-        });
-        router.get('/app/client/', function (req, res) {
-            console.log('Query all Clients');
-            _this.Clients.retrieveAllClients(res);
-        });
-        router.get('/app/client/:clientId', function (req, res) {
-            var id = req.params.clientId;
-            console.log('Query single registered Client with id: ' + id);
-            _this.Clients.retrieveClientDetails(res, { registeredUserID: id });
-        });
-        router.get('/app/clientCount', function (req, res) {
-            console.log('Query the number of Clients in db');
-            _this.Clients.retrieveClientCount(res);
-        });
-        // API endpoints for Discount
-        router.post('/app/discount/', function (req, res) {
-            console.log(req.body);
-            var jsonObj = req.body;
-            //jsonObj.listId = this.idGenerator;
-            _this.Clients.model.create([jsonObj], function (err) {
-                if (err) {
-                    console.log('object creation failed');
-                }
-            });
-            res.send(_this.idGenerator.toString());
-            _this.idGenerator++;
-        });
-        router.get('/app/discount/', function (req, res) {
-            console.log('Query all Discounts');
-            _this.Discounts.retrieveAllDiscounts(res);
-        });
-        router.get('/app/discount/:DiscountId', function (req, res) {
-            var id = req.params.DiscountId;
-            console.log('Query single registered Discount with id: ' + id);
-            _this.Discounts.retrieveDiscountDetails(res, { discountID: id });
-        });
-        router.get('/app/discountCount', function (req, res) {
-            console.log('Query the number of Discounts in db');
-            _this.Discounts.retrieveDiscountCount(res);
-        });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));
