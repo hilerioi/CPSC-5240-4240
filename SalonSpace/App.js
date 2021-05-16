@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+exports.App = void 0;
 var express = require("express");
 var logger = require("morgan");
 var bodyParser = require("body-parser");
@@ -7,9 +8,9 @@ var MongoClient = require('mongodb').MongoClient;
 var Q = require('q');
 var TechnicianModel_1 = require("./model/TechnicianModel");
 var SalonModel_1 = require("./model/SalonModel");
-var LanguageModel_1 = require("./model/LanguageModel");
+//import {LanguageModel} from './model/LanguageModel';
 var RegisteredUserModel_1 = require("./model/RegisteredUserModel");
-var SkillModel_1 = require("./model/SkillModel");
+//import {SkillModel} from './model/SkillModel';
 var RatingModel_1 = require("./model/RatingModel");
 //import {DataAccess} from './DataAccess';
 // Creates and configures an ExpressJS web server.
@@ -21,9 +22,9 @@ var App = /** @class */ (function () {
         this.routes();
         this.idGenerator = 102;
         this.Technicians = new TechnicianModel_1.TechnicianModel();
-        this.Languages = new LanguageModel_1.LanguageModel();
+        //this.Languages = new LanguageModel();
         this.RegisteredUsers = new RegisteredUserModel_1.RegisteredUserModel();
-        this.Skills = new SkillModel_1.SkillModel();
+        //this.Skills =new SkillModel();
         this.Ratings = new RatingModel_1.RatingModel();
         this.Salons = new SalonModel_1.SalonModel();
     }
@@ -115,11 +116,24 @@ var App = /** @class */ (function () {
             console.log('Query the number of registeredUser elements in db');
             _this.RegisteredUsers.retrieveAllRegisteredUserCount(res);
         });
-        //API endpoints for skills
-        router.get('/app/skills/', function (req, res) {
-            console.log('Query All skills');
-            _this.Skills.retreiveAllSkills(res);
-        });
+        //API endpoints for skills ---> Not needed?
+        // router.get('/app/skills/', (req, res) => {
+        //     console.log('Query All skills');
+        //     this.Technicians.retreiveAllSkills(res);
+        // });
+        //API endpoints for ratings 
+        // router.post('/app/rating/', (req, res) => {
+        //   console.log(req.body);
+        //   var jsonObj = req.body;
+        //   //jsonObj.listId = this.idGenerator;
+        //   this.Ratings.model.create([jsonObj], (err) => {
+        //       if (err) {
+        //           console.log('object creation failed');
+        //       }
+        //   });
+        //   res.send(this.idGenerator.toString());
+        //   this.idGenerator++;
+        // });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));

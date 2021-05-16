@@ -53,6 +53,9 @@ class App {
   // Configure API endpoints.
   private routes(): void {
     let router = express.Router();
+  
+  //API endpoint for application
+
     
   //API endpoints for technician
     router.post('/app/technician/', (req, res) => {
@@ -158,18 +161,25 @@ class App {
     
     //API endpoints for ratings 
 
-    // router.post('/app/rating/', (req, res) => {
-    //   console.log(req.body);
-    //   var jsonObj = req.body;
-    //   //jsonObj.listId = this.idGenerator;
-    //   this.Ratings.model.create([jsonObj], (err) => {
-    //       if (err) {
-    //           console.log('object creation failed');
-    //       }
-    //   });
-    //   res.send(this.idGenerator.toString());
-    //   this.idGenerator++;
-    // });
+    router.post('/app/rating/', (req, res) => {
+      console.log(req.body);
+      var jsonObj = req.body;
+      //jsonObj.listId = this.idGenerator;
+      this.Ratings.model.create([jsonObj], (err) => {
+          if (err) {
+              console.log('object creation failed');
+          }
+      });
+      res.send(this.idGenerator.toString());
+      this.idGenerator++;
+    });
+
+    router.get('/app/rating/', (req, res) => {
+      console.log('Query All ratings');
+      this.Ratings.retreiveAllRatings(res);
+  });
+
+
     
 
 

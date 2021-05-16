@@ -14,8 +14,7 @@ var RatingModel = /** @class */ (function () {
         this.schema = new Mongoose.Schema({
             ratingID: Number,
             stars: Number,
-            text: String,
-            ratingListID: Array()
+            text: String
         }, { collection: 'ratings' });
     };
     RatingModel.prototype.createModel = function () {

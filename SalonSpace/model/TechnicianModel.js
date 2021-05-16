@@ -15,8 +15,8 @@ var TechnicianModel = /** @class */ (function () {
             registeredUserID: Number,
             technicianId: Number,
             skillList: Array(),
-            ratingListID: Number,
-            salonListID: Number,
+            ratingListID: Array(),
+            salonListID: Array(),
             languageList: Array()
         }, { collection: 'technicians' });
     };
