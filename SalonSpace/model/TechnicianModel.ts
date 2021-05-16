@@ -61,5 +61,6 @@ class TechnicianModel {
             response.json(numberOfTechnicians) ;
         });
     }
+
 }
 export {TechnicianModel};

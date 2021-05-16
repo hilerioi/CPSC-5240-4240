@@ -9,9 +9,9 @@ var Q = require('q');
 
 import {TechnicianModel} from './model/TechnicianModel';
 import {SalonModel} from './model/SalonModel';
-import {LanguageModel} from './model/LanguageModel';
+//import {LanguageModel} from './model/LanguageModel';
 import {RegisteredUserModel} from './model/RegisteredUserModel';
-import {SkillModel} from './model/SkillModel';
+//import {SkillModel} from './model/SkillModel';
 import {RatingModel} from './model/RatingModel';
 
 //import {DataAccess} from './DataAccess';
@@ -22,9 +22,9 @@ class App {
   // ref to Express instance
   public expressApp: express.Application;
   public Technicians:TechnicianModel;
-  public Languages:LanguageModel;
+  //public Languages:LanguageModel;
   public RegisteredUsers:RegisteredUserModel;
-  public Skills:SkillModel;
+  //public Skills:SkillModel;
   public Ratings:RatingModel;
   public Salons:SalonModel;
   public idGenerator:number;
@@ -36,9 +36,9 @@ class App {
     this.routes();
     this.idGenerator = 102;
     this.Technicians = new TechnicianModel();
-    this.Languages = new LanguageModel();
+    //this.Languages = new LanguageModel();
     this.RegisteredUsers = new RegisteredUserModel();
-    this.Skills =new SkillModel();
+    //this.Skills =new SkillModel();
     this.Ratings = new RatingModel();
     this.Salons = new SalonModel();
   }
@@ -149,12 +149,12 @@ class App {
       this.RegisteredUsers.retrieveAllRegisteredUserCount(res);
     });
 
-    //API endpoints for skills
+    //API endpoints for skills ---> Not needed?
 
-    router.get('/app/skills/', (req, res) => {
-        console.log('Query All skills');
-        this.Skills.retreiveAllSkills(res);
-    });
+    // router.get('/app/skills/', (req, res) => {
+    //     console.log('Query All skills');
+    //     this.Technicians.retreiveAllSkills(res);
+    // });
     
     
 
