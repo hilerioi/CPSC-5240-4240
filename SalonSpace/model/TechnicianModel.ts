@@ -26,8 +26,8 @@ class TechnicianModel {
                 registeredUserID: Number,
                 technicianId: Number,
                 skillList: Array<string>(),
-                ratingListID: Number,
-                salonListID: Number,
+                ratingListID: Array<number>(),
+                salonListID: Array<number>(),
                 languageList: Array<string>()
             }, {collection: 'technicians'}
         );
