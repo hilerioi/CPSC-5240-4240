@@ -6,6 +6,6 @@ interface ITechnicianModel extends Mongoose.Document {
     skillList: Array<string>;
     ratingListID: number;
     salonListID: number;
-    languageListID: number;
+    languageList: Array<string>;
 }
 export {ITechnicianModel};
