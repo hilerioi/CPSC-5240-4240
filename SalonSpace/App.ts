@@ -13,6 +13,8 @@ import {SalonModel} from './model/SalonModel';
 import {RegisteredUserModel} from './model/RegisteredUserModel';
 //import {SkillModel} from './model/SkillModel';
 import {RatingModel} from './model/RatingModel';
+import {ClientModel} from './model/ClientModel';
+import {DiscountModel} from './model/DiscountModel';
 
 //import {DataAccess} from './DataAccess';
 
@@ -28,6 +30,8 @@ class App {
   public Ratings:RatingModel;
   public Salons:SalonModel;
   public idGenerator:number;
+  public Clients:ClientModel;
+  public Discounts:DiscountModel;
 
   //Run configuration methods on the Express instance.
   constructor() {
@@ -41,6 +45,8 @@ class App {
     //this.Skills =new SkillModel();
     this.Ratings = new RatingModel();
     this.Salons = new SalonModel();
+    this.Clients = new ClientModel();
+    this.Discounts = new DiscountModel();
   }
 
   // Configure Express middleware.
@@ -159,6 +165,7 @@ class App {
     //     this.Technicians.retreiveAllSkills(res);
     // });
     
+<<<<<<< HEAD
     //API endpoints for ratings 
 
     router.post('/app/rating/', (req, res) => {
@@ -191,6 +198,67 @@ class App {
     });
 
 
+=======
+    // API endpoints for Client
+    router.post('/app/client/', (req, res) => {
+        console.log(req.body);
+        var jsonObj = req.body;
+        //jsonObj.listId = this.idGenerator;
+        this.Clients.model.create([jsonObj], (err) => {
+            if (err) {
+                console.log('object creation failed');
+            }
+        });
+        res.send(this.idGenerator.toString());
+        this.idGenerator++;
+    });
+
+    router.get('/app/client/', (req, res) => {
+        console.log('Query all Clients');
+        this.Clients.retrieveAllClients(res);
+    });
+    
+    router.get('/app/client/:clientId', (req, res) => {
+      var id = req.params.clientId;
+      console.log('Query single registered Client with id: ' + id);
+      this.Clients.retrieveClientDetails(res, {registeredUserID: id});
+    });
+
+    router.get('/app/clientCount', (req, res) => {
+      console.log('Query the number of Clients in db');
+      this.Clients.retrieveClientCount(res);
+    });
+
+    // API endpoints for Discount
+    router.post('/app/discount/', (req, res) => {
+        console.log(req.body);
+        var jsonObj = req.body;
+        //jsonObj.listId = this.idGenerator;
+        this.Clients.model.create([jsonObj], (err) => {
+            if (err) {
+                console.log('object creation failed');
+            }
+        });
+        res.send(this.idGenerator.toString());
+        this.idGenerator++;
+    });
+
+    router.get('/app/discount/', (req, res) => {
+        console.log('Query all Discounts');
+        this.Discounts.retrieveAllDiscounts(res);
+    });
+    
+    router.get('/app/discount/:DiscountId', (req, res) => {
+      var id = req.params.DiscountId;
+      console.log('Query single registered Discount with id: ' + id);
+      this.Discounts.retrieveDiscountDetails(res, {discountID: id});
+    });
+
+    router.get('/app/discountCount', (req, res) => {
+      console.log('Query the number of Discounts in db');
+      this.Discounts.retrieveDiscountCount(res);
+    });
+>>>>>>> c57b31ef4323b96bf3a3a64eb0affbcc797d23c5
     
 
 

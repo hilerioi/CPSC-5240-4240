@@ -13,8 +13,8 @@ var ClientModel = /** @class */ (function () {
         this.schema = new Mongoose.Schema({
             registeredUserID: Number,
             points: Number,
-            ratingListID: Number,
-            discountListID: Number
+            ratingListID: Array(),
+            discountListID: Array()
         }, { collection: 'clients' });
     };
     ClientModel.prototype.createModel = function () {
@@ -27,6 +27,7 @@ var ClientModel = /** @class */ (function () {
         });
     };
     ClientModel.prototype.retrieveClientDetails = function (response, filter) {
+        console.log('-----------', filter);
         var query = this.model.findOne(filter);
         query.exec(function (err, client) {
             response.json(client);
