@@ -20,7 +20,7 @@ class RatingModel {
                 ratingID: Number,
                 stars: Number,
                 text: String,
-                ratingListID: Array<Number>()
+                //ratingListID: Array<Number>()
             }, {collection: 'ratings'}
         );
     }
