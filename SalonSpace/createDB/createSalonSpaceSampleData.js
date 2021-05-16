@@ -164,19 +164,12 @@ techniciansCollection.insert(
 {
 	registeredUserID: 2,
 	technicianID: 2,
-<<<<<<< HEAD
 	name: "Anya",
 	age: 30,
 	skillList: ["Shellac", "Pedicure"],
 	ratingListID: [2],
 	salonListID: [2],
 	languageList: ["Russian", "English"]
-=======
-	skillListID: 2,
-	ratingListID: 2,
-	salonListID: 2,
-	languageListID: 2
->>>>>>> c57b31ef4323b96bf3a3a64eb0affbcc797d23c5
 }
 )
 techniciansCollection.insert(
@@ -312,7 +305,6 @@ clientsCollection.insert(
 )
 
 // DISCOUNTS
-<<<<<<< HEAD
 db.createCollection('clients')
 clientCollection = db.getCollection("clients")
 clientCollection.remove({})
@@ -329,73 +321,6 @@ clientCollection.insert(
     value: 6,
     used: true
 }
-=======
-db.createCollection('discounts')
-discountsCollection = db.getCollection('discounts')
-discountsCollection.remove({})
-discountsCollection.insert(
-    {
-        discountID: 1,
-        value: 10.00,
-        used: false
-    }
-)
-discountsCollection.insert(
-    {
-        discountID: 2,
-        value: 15.00,
-        used: false
-    }
-)
-discountsCollection.insert(
-    {
-        discountID: 3,
-        value: 5.00,
-        used: true
-    }
-)
-discountsCollection.insert(
-    {
-        discountID: 4,
-        value: 5.00,
-        used: false
-    }
-)
-discountsCollection.insert(
-    {
-        discountID: 5,
-        value: 25.00,
-        used: true
-    }
-)
-discountsCollection.insert(
-    {
-        discountID: 6,
-        value: 25.00,
-        used: false
-    }
-)
-discountsCollection.insert(
-    {
-        discountID: 7,
-        value: 10.00,
-        used: true
-    }
-)
-discountsCollection.insert(
-    {
-        discountID: 8,
-        value: 5.00,
-        used: false
-    }
-)
-discountsCollection.insert(
-    {
-        discountID: 9,
-        value: 25.00,
-        used: true
-    }
->>>>>>> c57b31ef4323b96bf3a3a64eb0affbcc797d23c5
 )
 discountsCollection.insert(
     {
