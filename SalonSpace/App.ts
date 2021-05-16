@@ -113,12 +113,12 @@ class App {
       var id = req.params.salonId;
       console.log('Query single salon with id: ' + id);
       this.Salons.retreiveSalonDetails(res, {salonID: id});
-  });
+    });
 
-  router.get('/app/salonCount', (req, res) => {
+    router.get('/app/salonCount', (req, res) => {
     console.log('Query the number of salon elements in db');
     this.Salons.retrieveSalonCount(res);
-  });
+    });
 
 
    //API endpoints for registeredUser
@@ -177,7 +177,18 @@ class App {
     router.get('/app/rating/', (req, res) => {
       console.log('Query All ratings');
       this.Ratings.retreiveAllRatings(res);
-  });
+    });
+
+    router.get('/app/rating/:ratingId', (req, res) => {
+      var id = req.params.ratingId;
+      console.log('Query single rating with id: ' + id);
+      this.Ratings.retreiveRatingsDetails(res, {ratingID: id});
+    });
+
+    router.get('/app/ratingCount', (req, res) => {
+      console.log('Query the number of rating elements in db');
+      this.Ratings.retrieveAllratingsCount(res);
+    });
 
 
     

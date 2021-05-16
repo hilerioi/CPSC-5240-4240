@@ -38,6 +38,7 @@ var App = /** @class */ (function () {
     App.prototype.routes = function () {
         var _this = this;
         var router = express.Router();
+        //API endpoint for application
         //API endpoints for technician
         router.post('/app/technician/', function (req, res) {
             console.log(req.body);
@@ -122,18 +123,31 @@ var App = /** @class */ (function () {
         //     this.Technicians.retreiveAllSkills(res);
         // });
         //API endpoints for ratings 
-        // router.post('/app/rating/', (req, res) => {
-        //   console.log(req.body);
-        //   var jsonObj = req.body;
-        //   //jsonObj.listId = this.idGenerator;
-        //   this.Ratings.model.create([jsonObj], (err) => {
-        //       if (err) {
-        //           console.log('object creation failed');
-        //       }
-        //   });
-        //   res.send(this.idGenerator.toString());
-        //   this.idGenerator++;
-        // });
+        router.post('/app/rating/', function (req, res) {
+            console.log(req.body);
+            var jsonObj = req.body;
+            //jsonObj.listId = this.idGenerator;
+            _this.Ratings.model.create([jsonObj], function (err) {
+                if (err) {
+                    console.log('object creation failed');
+                }
+            });
+            res.send(_this.idGenerator.toString());
+            _this.idGenerator++;
+        });
+        router.get('/app/rating/', function (req, res) {
+            console.log('Query All ratings');
+            _this.Ratings.retreiveAllRatings(res);
+        });
+        router.get('/app/rating/:ratingId', function (req, res) {
+            var id = req.params.ratingId;
+            console.log('Query single rating with id: ' + id);
+            _this.Ratings.retreiveRatingsDetails(res, { ratingID: id });
+        });
+        router.get('/app/ratingCount', function (req, res) {
+            console.log('Query the number of rating elements in db');
+            _this.Ratings.retrieveAllratingsCount(res);
+        });
         this.expressApp.use('/', router);
         this.expressApp.use('/app/json/', express.static(__dirname + '/app/json'));
         this.expressApp.use('/images', express.static(__dirname + '/img'));
