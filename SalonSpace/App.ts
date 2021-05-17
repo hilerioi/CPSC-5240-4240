@@ -158,13 +158,73 @@ class App {
       this.RegisteredUsers.retrieveAllRegisteredUserCount(res);
     });
 
+    // API endpoints for Client
+    router.post('/app/client/', function (req, res) {
+      console.log(req.body);
+      var jsonObj = req.body;
+      //jsonObj.listId = this.idGenerator;
+      this.Clients.model.create([jsonObj], function (err) {
+        if (err) {
+          console.log('object creation failed');
+        }
+        });
+      res.send(this.idGenerator.toString());
+              this.idGenerator++;
+    });
+
+    router.get('/app/client/', function (req, res) {
+      console.log('Query all Clients');
+      this.Clients.retrieveAllClients(res);
+    });
+          
+    router.get('/app/client/:clientId', function (req, res) {
+      var id = req.params.clientId;
+      console.log('Query single registered Client with id: ' + id);
+      this.Clients.retrieveClientDetails(res, { registeredUserID: id });
+    });
+          
+    router.get('/app/clientCount', function (req, res) {
+      console.log('Query the number of Clients in db');
+      this.Clients.retrieveClientCount(res);
+    });
+
+    // API endpoints for Discount
+    router.post('/app/discount/', function (req, res) {
+      console.log(req.body);
+      var jsonObj = req.body;
+      //jsonObj.listId = this.idGenerator;
+      this.Clients.model.create([jsonObj], function (err) {
+      if (err) {
+        console.log('object creation failed');
+                  }
+      });
+      res.send(this.idGenerator.toString());
+      this.idGenerator++;
+    });
+          
+    router.get('/app/discount/', function (req, res) {
+      console.log('Query all Discounts');
+      this.Discounts.retrieveAllDiscounts(res);
+    });
+          
+    router.get('/app/discount/:DiscountId', function (req, res) {
+      var id = req.params.DiscountId;
+      console.log('Query single registered Discount with id: ' + id);
+      this.Discounts.retrieveDiscountDetails(res, { discountID: id });
+    });
+          
+    router.get('/app/discountCount', function (req, res) {
+      console.log('Query the number of Discounts in db');
+      this.Discounts.retrieveDiscountCount(res);
+    });
+
     //API endpoints for skills ---> Not needed?
 
     // router.get('/app/skills/', (req, res) => {
     //     console.log('Query All skills');
     //     this.Technicians.retreiveAllSkills(res);
     // });
-    
+
     //API endpoints for ratings 
 
     router.post('/app/rating/', (req, res) => {
