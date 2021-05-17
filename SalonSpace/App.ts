@@ -167,7 +167,7 @@ class App {
         if (err) {
           console.log('object creation failed');
         }
-        });
+      });
       res.send(this.idGenerator.toString());
               this.idGenerator++;
     });
@@ -194,9 +194,9 @@ class App {
       var jsonObj = req.body;
       //jsonObj.listId = this.idGenerator;
       this.Clients.model.create([jsonObj], function (err) {
-      if (err) {
-        console.log('object creation failed');
-                  }
+        if (err) {
+          console.log('object creation failed');
+        }
       });
       res.send(this.idGenerator.toString());
       this.idGenerator++;
