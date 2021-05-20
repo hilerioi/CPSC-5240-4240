@@ -31,7 +31,7 @@ class RegisteredUserModel {
         this.model = mongooseConnection.model<IRegisteredUserModel>("RegisteredUsers", this.schema);
     }
 
-    public retreiveAllRegisteredUsers(response:any): any {
+    public retrieveAllRegisteredUsers(response:any): any {
         var query = this.model.find({});
         query.exec( (err, itemArray) => {
             response.json(itemArray) ;
@@ -39,7 +39,7 @@ class RegisteredUserModel {
         
     }
 
-    public retreiveRegisteredUsersDetails(response:any, filter:Object) {
+    public retrieveRegisteredUsersDetails(response:any, filter:Object) {
         var query = this.model.find(filter);
         query.exec( (err, itemArray) => {
             response.json(itemArray);

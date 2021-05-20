@@ -1,16 +1,15 @@
 "use strict";
-exports.__esModule = true;
-exports.RegisteredUserModel = void 0;
-var Mongoose = require("mongoose");
-var DataAccess_1 = require("../DataAccess");
-var mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
-var mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
-var RegisteredUserModel = /** @class */ (function () {
-    function RegisteredUserModel() {
+Object.defineProperty(exports, "__esModule", { value: true });
+const Mongoose = require("mongoose");
+const DataAccess_1 = require("../DataAccess");
+let mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
+let mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
+class RegisteredUserModel {
+    constructor() {
         this.createSchema();
         this.createModel();
     }
-    RegisteredUserModel.prototype.createSchema = function () {
+    createSchema() {
         this.schema = new Mongoose.Schema({
             registeredUserID: Number,
             email: String,
@@ -19,30 +18,29 @@ var RegisteredUserModel = /** @class */ (function () {
             password: String,
             loginStatus: Boolean
         }, { collection: 'registeredUsers' });
-    };
-    RegisteredUserModel.prototype.createModel = function () {
+    }
+    createModel() {
         this.model = mongooseConnection.model("RegisteredUsers", this.schema);
-    };
-    RegisteredUserModel.prototype.retreiveAllRegisteredUsers = function (response) {
+    }
+    retrieveAllRegisteredUsers(response) {
         var query = this.model.find({});
-        query.exec(function (err, itemArray) {
+        query.exec((err, itemArray) => {
             response.json(itemArray);
         });
-    };
-    RegisteredUserModel.prototype.retreiveRegisteredUsersDetails = function (response, filter) {
+    }
+    retrieveRegisteredUsersDetails(response, filter) {
         var query = this.model.find(filter);
-        query.exec(function (err, itemArray) {
+        query.exec((err, itemArray) => {
             response.json(itemArray);
         });
-    };
-    RegisteredUserModel.prototype.retrieveAllRegisteredUserCount = function (response) {
+    }
+    retrieveAllRegisteredUserCount(response) {
         console.log("retrieve RegisteredUsers Count ...");
         var query = this.model.estimatedDocumentCount();
-        query.exec(function (err, numberOfRegisteredUsers) {
+        query.exec((err, numberOfRegisteredUsers) => {
             console.log("numberOfRegisteredUsers: " + numberOfRegisteredUsers);
             response.json(numberOfRegisteredUsers);
         });
-    };
-    return RegisteredUserModel;
-}());
+    }
+}
 exports.RegisteredUserModel = RegisteredUserModel;

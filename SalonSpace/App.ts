@@ -81,12 +81,12 @@ class App {
     router.get('/app/technician/:technicianId', (req, res) => {
         var id = req.params.technicianId;
         console.log('Query single technician with id: ' + id);
-        this.Technicians.retreiveTechniciansDetails(res, {technicianID: id});
+        this.Technicians.retrieveTechniciansDetails(res, {technicianID: id});
     });
 
     router.get('/app/technician/', (req, res) => {
         console.log('Query All technicians');
-        this.Technicians.retreiveAllTechnicians(res);
+        this.Technicians.retrieveAllTechnicians(res);
     });
 
     router.get('/app/technicianCount', (req, res) => {
@@ -112,13 +112,13 @@ class App {
 
     router.get('/app/salon/', (req, res) => {
         console.log('Query All salons');
-        this.Salons.retreiveAllSalons(res);
+        this.Salons.retrieveAllSalons(res);
     });
 
     router.get('/app/salon/:salonId', (req, res) => {
       var id = req.params.salonId;
       console.log('Query single salon with id: ' + id);
-      this.Salons.retreiveSalonDetails(res, {salonID: id});
+      this.Salons.retrieveSalonDetails(res, {salonID: id});
     });
 
     router.get('/app/salonCount', (req, res) => {
@@ -144,13 +144,13 @@ class App {
     
     router.get('/app/registeredUser/', (req, res) => {
         console.log('Query All registered Users');
-        this.RegisteredUsers.retreiveAllRegisteredUsers(res);
+        this.RegisteredUsers.retrieveAllRegisteredUsers(res);
     });
     
     router.get('/app/registeredUser/:registeredUserId', (req, res) => {
       var id = req.params.registeredUserId;
       console.log('Query single registered User with id: ' + id);
-      this.RegisteredUsers.retreiveRegisteredUsersDetails(res, {registeredUserID: id});
+      this.RegisteredUsers.retrieveRegisteredUsersDetails(res, {registeredUserID: id});
     });
 
     router.get('/app/registeredUserCount', (req, res) => {
@@ -222,7 +222,7 @@ class App {
 
     // router.get('/app/skills/', (req, res) => {
     //     console.log('Query All skills');
-    //     this.Technicians.retreiveAllSkills(res);
+    //     this.Technicians.retrieveAllSkills(res);
     // });
 
     //API endpoints for ratings 
@@ -242,13 +242,13 @@ class App {
 
     router.get('/app/rating/', (req, res) => {
       console.log('Query All ratings');
-      this.Ratings.retreiveAllRatings(res);
+      this.Ratings.retrieveAllRatings(res);
     });
 
     router.get('/app/rating/:ratingId', (req, res) => {
       var id = req.params.ratingId;
       console.log('Query single rating with id: ' + id);
-      this.Ratings.retreiveRatingsDetails(res, {ratingID: id});
+      this.Ratings.retrieveRatingsDetails(res, {ratingID: id});
     });
 
     router.get('/app/ratingCount', (req, res) => {

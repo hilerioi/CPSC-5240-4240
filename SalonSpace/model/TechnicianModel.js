@@ -1,16 +1,15 @@
 "use strict";
-exports.__esModule = true;
-exports.TechnicianModel = void 0;
-var Mongoose = require("mongoose");
-var DataAccess_1 = require("../DataAccess");
-var mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
-var mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
-var TechnicianModel = /** @class */ (function () {
-    function TechnicianModel() {
+Object.defineProperty(exports, "__esModule", { value: true });
+const Mongoose = require("mongoose");
+const DataAccess_1 = require("../DataAccess");
+let mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
+let mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
+class TechnicianModel {
+    constructor() {
         this.createSchema();
         this.createModel();
     }
-    TechnicianModel.prototype.createSchema = function () {
+    createSchema() {
         this.schema = new Mongoose.Schema({
             registeredUserID: Number,
             technicianId: Number,
@@ -19,30 +18,29 @@ var TechnicianModel = /** @class */ (function () {
             salonListID: Array(),
             languageList: Array()
         }, { collection: 'technicians' });
-    };
-    TechnicianModel.prototype.createModel = function () {
+    }
+    createModel() {
         this.model = mongooseConnection.model("Technicians", this.schema);
-    };
-    TechnicianModel.prototype.retreiveAllTechnicians = function (response) {
+    }
+    retrieveAllTechnicians(response) {
         var query = this.model.find({});
-        query.exec(function (err, itemArray) {
+        query.exec((err, itemArray) => {
             response.json(itemArray);
         });
-    };
-    TechnicianModel.prototype.retreiveTechniciansDetails = function (response, filter) {
+    }
+    retrieveTechniciansDetails(response, filter) {
         var query = this.model.findOne(filter);
-        query.exec(function (err, itemArray) {
+        query.exec((err, itemArray) => {
             response.json(itemArray);
         });
-    };
-    TechnicianModel.prototype.retrieveTechnicianCount = function (response) {
+    }
+    retrieveTechnicianCount(response) {
         console.log("retrieve Technician Count ...");
         var query = this.model.estimatedDocumentCount();
-        query.exec(function (err, numberOfTechnicians) {
+        query.exec((err, numberOfTechnicians) => {
             console.log("numberOfTechnicians: " + numberOfTechnicians);
             response.json(numberOfTechnicians);
         });
-    };
-    return TechnicianModel;
-}());
+    }
+}
 exports.TechnicianModel = TechnicianModel;

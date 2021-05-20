@@ -1,46 +1,44 @@
 "use strict";
-exports.__esModule = true;
-exports.SalonModel = void 0;
-var Mongoose = require("mongoose");
-var DataAccess_1 = require("../DataAccess");
-var mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
-var mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
-var SalonModel = /** @class */ (function () {
-    function SalonModel() {
+Object.defineProperty(exports, "__esModule", { value: true });
+const Mongoose = require("mongoose");
+const DataAccess_1 = require("../DataAccess");
+let mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
+let mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
+class SalonModel {
+    constructor() {
         this.createSchema();
         this.createModel();
     }
-    SalonModel.prototype.createSchema = function () {
+    createSchema() {
         this.schema = new Mongoose.Schema({
             salonID: Number,
             name: String,
             address: String,
             salonListID: Array()
         }, { collection: 'salons' });
-    };
-    SalonModel.prototype.createModel = function () {
+    }
+    createModel() {
         this.model = mongooseConnection.model("Salons", this.schema);
-    };
-    SalonModel.prototype.retreiveAllSalons = function (response) {
+    }
+    retrieveAllSalons(response) {
         var query = this.model.find({});
-        query.exec(function (err, itemArray) {
+        query.exec((err, itemArray) => {
             response.json(itemArray);
         });
-    };
-    SalonModel.prototype.retreiveSalonDetails = function (response, filter) {
+    }
+    retrieveSalonDetails(response, filter) {
         var query = this.model.find(filter);
-        query.exec(function (err, itemArray) {
+        query.exec((err, itemArray) => {
             response.json(itemArray);
         });
-    };
-    SalonModel.prototype.retrieveSalonCount = function (response) {
+    }
+    retrieveSalonCount(response) {
         console.log("retrieve Salon Count ...");
         var query = this.model.estimatedDocumentCount();
-        query.exec(function (err, numberOfSalons) {
+        query.exec((err, numberOfSalons) => {
             console.log("numberOfSalons: " + numberOfSalons);
             response.json(numberOfSalons);
         });
-    };
-    return SalonModel;
-}());
+    }
+}
 exports.SalonModel = SalonModel;

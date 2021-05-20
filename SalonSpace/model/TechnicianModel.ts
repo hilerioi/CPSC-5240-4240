@@ -37,7 +37,7 @@ class TechnicianModel {
         this.model = mongooseConnection.model<ITechnicianModel>("Technicians", this.schema);
     }
 
-    public retreiveAllTechnicians(response:any): any {
+    public retrieveAllTechnicians(response:any): any {
         var query = this.model.find({});
         query.exec( (err, itemArray) => {
             response.json(itemArray) ;
@@ -45,7 +45,7 @@ class TechnicianModel {
         
     }
     
-    public retreiveTechniciansDetails(response:any, filter:Object) {
+    public retrieveTechniciansDetails(response:any, filter:Object) {
         var query = this.model.findOne(filter);
         query.exec( (err, itemArray) => {
             response.json(itemArray);
