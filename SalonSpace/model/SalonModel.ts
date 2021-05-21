@@ -29,7 +29,7 @@ class SalonModel {
         this.model = mongooseConnection.model<ISalonModel>("Salons", this.schema);
     }
 
-    public retreiveAllSalons(response:any): any {
+    public retrieveAllSalons(response:any): any {
         var query = this.model.find({});
         query.exec( (err, itemArray) => {
             response.json(itemArray) ;
@@ -37,7 +37,7 @@ class SalonModel {
         
     }
 
-    public retreiveSalonDetails(response:any, filter:Object) {
+    public retrieveSalonDetails(response:any, filter:Object) {
         var query = this.model.find(filter);
         query.exec( (err, itemArray) => {
             response.json(itemArray);

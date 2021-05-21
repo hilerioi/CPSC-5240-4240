@@ -24,7 +24,7 @@ class TechnicianModel {
         this.schema = new Mongoose.Schema(
             {
                 registeredUserID: Number,
-                technicianId: Number,
+                technicianID: Number,
                 skillList: Array<string>(),
                 ratingListID: Array<number>(),
                 salonListID: Array<number>(),
@@ -37,7 +37,7 @@ class TechnicianModel {
         this.model = mongooseConnection.model<ITechnicianModel>("Technicians", this.schema);
     }
 
-    public retreiveAllTechnicians(response:any): any {
+    public retrieveAllTechnicians(response:any): any {
         var query = this.model.find({});
         query.exec( (err, itemArray) => {
             response.json(itemArray) ;
@@ -45,8 +45,8 @@ class TechnicianModel {
         
     }
     
-    public retreiveTechniciansDetails(response:any, filter:Object) {
-        var query = this.model.findOne(filter);
+    public retrieveTechniciansDetails(response:any, filter:Object) {
+        var query = this.model.findOne({technicianID: '1'});
         query.exec( (err, itemArray) => {
             response.json(itemArray);
         });

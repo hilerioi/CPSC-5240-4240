@@ -1,45 +1,43 @@
 "use strict";
-exports.__esModule = true;
-exports.DiscountModel = void 0;
-var Mongoose = require("mongoose");
-var DataAccess_1 = require("../DataAccess");
-var mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
-var mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
-var DiscountModel = /** @class */ (function () {
-    function DiscountModel() {
+Object.defineProperty(exports, "__esModule", { value: true });
+const Mongoose = require("mongoose");
+const DataAccess_1 = require("../DataAccess");
+let mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
+let mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
+class DiscountModel {
+    constructor() {
         this.createSchema();
         this.createModel();
     }
-    DiscountModel.prototype.createSchema = function () {
+    createSchema() {
         this.schema = new Mongoose.Schema({
             discountID: Number,
             value: Number,
             used: Boolean
         }, { collection: 'discounts' });
-    };
-    DiscountModel.prototype.createModel = function () {
+    }
+    createModel() {
         this.model = mongooseConnection.model("Discounts", this.schema);
-    };
-    DiscountModel.prototype.retrieveAllDiscounts = function (response) {
+    }
+    retrieveAllDiscounts(response) {
         var query = this.model.find({});
-        query.exec(function (err, discountsArray) {
+        query.exec((err, discountsArray) => {
             response.json(discountsArray);
         });
-    };
-    DiscountModel.prototype.retrieveDiscountDetails = function (response, filter) {
+    }
+    retrieveDiscountDetails(response, filter) {
         var query = this.model.findOne(filter);
-        query.exec(function (err, discount) {
+        query.exec((err, discount) => {
             response.json(discount);
         });
-    };
-    DiscountModel.prototype.retrieveDiscountCount = function (response) {
+    }
+    retrieveDiscountCount(response) {
         console.log("retrieve Discount Count ...");
         var query = this.model.estimatedDocumentCount();
-        query.exec(function (err, numberOfDiscounts) {
+        query.exec((err, numberOfDiscounts) => {
             console.log("numberOfDiscounts: " + numberOfDiscounts);
             response.json(numberOfDiscounts);
         });
-    };
-    return DiscountModel;
-}());
+    }
+}
 exports.DiscountModel = DiscountModel;
