@@ -46,8 +46,10 @@ class TechnicianModel {
     }
     
     public retrieveTechniciansDetails(response:any, filter:Object) {
+        console.log("IN HERE???????????????",filter);
         var query = this.model.findOne(filter);
         query.exec( (err, itemArray) => {
+            console.log('==============================',itemArray);
             response.json(itemArray);
         });
     }

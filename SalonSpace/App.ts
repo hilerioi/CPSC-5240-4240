@@ -173,6 +173,7 @@ class App {
     });
 
     router.get('/app/client/', function (req, res) {
+      console.log('===in client get all===');
       console.log('Query all Clients');
       this.Clients.retrieveAllClients(res);
     });

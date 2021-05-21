@@ -1,43 +1,44 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const Mongoose = require("mongoose");
-const DataAccess_1 = require("../DataAccess");
-let mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
-let mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
-class RatingModel {
-    constructor() {
+exports.__esModule = true;
+var Mongoose = require("mongoose");
+var DataAccess_1 = require("../DataAccess");
+var mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
+var mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
+var RatingModel = /** @class */ (function () {
+    function RatingModel() {
         this.createSchema();
         this.createModel();
     }
-    createSchema() {
+    RatingModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
             ratingID: Number,
             stars: Number,
-            text: String,
+            text: String
         }, { collection: 'ratings' });
-    }
-    createModel() {
+    };
+    RatingModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("Ratings", this.schema);
-    }
-    retrieveAllRatings(response) {
+    };
+    RatingModel.prototype.retrieveAllRatings = function (response) {
         var query = this.model.find({});
-        query.exec((err, itemArray) => {
+        query.exec(function (err, itemArray) {
             response.json(itemArray);
         });
-    }
-    retrieveRatingsDetails(response, filter) {
+    };
+    RatingModel.prototype.retrieveRatingsDetails = function (response, filter) {
         var query = this.model.findOne(filter);
-        query.exec((err, rating) => {
+        query.exec(function (err, rating) {
             response.json(rating);
         });
-    }
-    retrieveAllratingsCount(response) {
+    };
+    RatingModel.prototype.retrieveAllratingsCount = function (response) {
         console.log("retrieve Ratings Count ...");
         var query = this.model.estimatedDocumentCount();
-        query.exec((err, numberOfRatings) => {
+        query.exec(function (err, numberOfRatings) {
             console.log("numberOfRatings: " + numberOfRatings);
             response.json(numberOfRatings);
         });
-    }
-}
+    };
+    return RatingModel;
+}());
 exports.RatingModel = RatingModel;

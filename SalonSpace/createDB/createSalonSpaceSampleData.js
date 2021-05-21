@@ -1,24 +1,5 @@
 var db = db.getSiblingDB('SalonSpace')
 
-// // SKILLS
-// db.createCollection('skills')
-// skillsCollection = db.getCollection("skills")
-// skillsCollection.remove({})
-// skillsCollection.insert(
-// {
-// 	skillID: 1,
-// 	name: "Manicure",
-// 	skillListID: [1, 2]
-// }
-// )
-// skillsCollection.insert(
-// {
-// 	skillID: 2,
-// 	name: "Pedicure",
-// 	skillListID: [1]
-// }
-// )
-
 // SALONS
 db.createCollection('salons')
 salonsCollection = db.getCollection("salons")
@@ -203,33 +184,6 @@ techniciansCollection.insert(
 }
 )
 
-
-// LANGUAGES
-// db.createCollection('languages')
-// languagesCollection = db.getCollection("languages")
-// languagesCollection.remove({})
-// languagesCollection.insert(
-// {
-// 	languageID: 1,
-// 	name: "English",
-// 	languageListID:[2]
-// }
-// )
-// languagesCollection.insert(
-// {
-// 	languageID: 2,
-// 	name: "Thai",
-// 	languageListID:[1, 2]
-// }
-// )
-// languagesCollection.insert(
-// {
-// 	languageID: 3,
-// 	name: "Spanish",
-// 	languageListID:[]
-// }
-// )
-
 // RATINGS
 db.createCollection('ratings')
 ratingsCollection = db.getCollection("ratings")
@@ -305,27 +259,27 @@ clientsCollection.insert(
 )
 
 // DISCOUNTS
-db.createCollection('clients')
-clientCollection = db.getCollection("clients")
-clientCollection.remove({})
-clientCollection.insert(
-{
-	discountID: 1,
-    value: 5,
-    used: false
-}
-)
-clientCollection.insert(
-{
-	discountID: 2,
-    value: 6,
-    used: true
-}
+db.createCollection('discounts')
+discountsCollection = db.getCollection("discounts")
+discountsCollection.remove({})
+discountsCollection.insert(
+	{
+		discountID: 1,
+		value: 5,
+		used: false
+	}
 )
 discountsCollection.insert(
-    {
-        discountID: 10,
-        value: 25.00,
-        used: false
-    }
+	{
+		discountID: 2,
+		value: 6,
+		used: true
+	}
+)
+discountsCollection.insert(
+	{
+		discountID: 10,
+		value: 25.00,
+		used: false
+	}
 )
