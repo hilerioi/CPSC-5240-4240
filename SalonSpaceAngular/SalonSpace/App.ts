@@ -62,7 +62,12 @@ class App {
   
   //API endpoint for application
 
-    
+  router.use( (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+   });
+   
   //API endpoints for technician
     router.post('/app/technician/', (req, res) => {
       console.log(req.body);
