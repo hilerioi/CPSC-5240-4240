@@ -194,7 +194,7 @@ class App {
       console.log(req.body);
       var jsonObj = req.body;
       //jsonObj.listId = this.idGenerator;
-      this.Clients.model.create([jsonObj], function (err) {
+      this.Discounts.model.create([jsonObj], function (err) {
         if (err) {
           console.log('object creation failed');
         }
