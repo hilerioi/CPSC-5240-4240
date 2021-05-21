@@ -59,6 +59,12 @@ class App {
   // Configure API endpoints.
   private routes(): void {
     let router = express.Router();
+
+    router.use( (req, res, next) => {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+    });
   
   //API endpoint for application
 
