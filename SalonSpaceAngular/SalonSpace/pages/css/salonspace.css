@@ -1,0 +1,188 @@
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+    height: 450px
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+
+    .row.content {
+        height: auto;
+    }
+}
+
+
+
+nav.navbar {
+    background-color: white;
+    /* #CF71AF */
+    /* #AA98A9 */
+    margin-bottom: 0;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    background-size: 100% 100%;
+    background-image: url("../images/logo1.png");
+}
+
+#topnav a {
+    color: #CF71AF;
+}
+
+.main {
+    background-color: #fffbf2;
+}
+
+.salon {
+    background-image: url("../images/salon1.png");
+    background-size: 100% 100%;
+    text-align: left;
+    height: 200px;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.salon-title {
+    background-color:rgba(255, 255, 255, 0.5);
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding: 12px;
+    color: #4a4a4a;
+}
+
+.salon-title h1 {
+    margin: 0;
+    font-size: 64px;
+}
+
+div.card {
+    height: 160px;
+    border-radius: 25px;
+    padding: 16px;
+    background-color: #CF71AF;
+    margin-bottom: 12px;
+}
+
+/* div.card:nth-of-type(1) {
+    background-color: #785ef0;
+}
+
+div.card:nth-of-type(2) {
+    background-color: #73ffa6;
+}
+
+div.card:nth-of-type(3) {
+    background-color: #CF71AF;
+}
+
+div.card:nth-of-type(4) {
+    background-color: #e373ff;
+} */
+
+
+.profile-pic {
+    display: inline-block;
+    height: 64px;
+    width: 64px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    background-size: 100% 100%;
+    border: 4px solid white;
+    vertical-align: top;
+}
+
+#profile-pic-1 {
+    background-image: url("../images/technician1.png");
+}
+
+#profile-pic-2 {
+    background-image: url("../images/technician7.png");
+}
+
+#profile-pic-3 {
+    background-image: url("../images/technician4.png");
+}
+
+#profile-pic-4 {
+    background-image: url("../images/technician5.png");
+}
+/* 
+#profile-pic-5 {
+    background-image: url("technician5.png");
+}
+
+#profile-pic-6 {
+    background-image: url("technician6.png");
+}
+
+#profile-pic-7 {
+    background-image: url("technician7.png");
+}
+
+#profile-pic-8 {
+    background-image: url("technician8.png");
+} */
+
+.profile-text {
+    display: inline-block;
+    margin-left: 24px;
+    color: white;
+}
+
+.profile-text h3 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    margin-right: 24px;
+}
+
+.profile-text a {
+    color: white;
+    text-decoration: underline;
+}
+
+.stars {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.profile-tag {
+    color: black;
+    background-color: white;
+    padding: 4px;
+    border-radius: 8px;
+    width: 80px;
+    text-align: center;
+    display: inline-block;
+}
+
+h3 {
+    margin: 0;
+}
