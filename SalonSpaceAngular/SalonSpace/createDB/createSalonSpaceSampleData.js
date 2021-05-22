@@ -135,6 +135,7 @@ techniciansCollection.insert(
 {
 	registeredUserID: 1,
 	technicianID: 1,
+	name:"Maya",
 	skillList: ["Manicure", "Pedicure"],
 	ratingListID: [1, 2],
 	salonListID: [1],
@@ -157,30 +158,33 @@ techniciansCollection.insert(
 {
 	registeredUserID: 5,
 	technicianID: 3,
-	skillListID: 2,
-	ratingListID: 2,
-	salonListID: 2,
-	languageListID: 2
+	name:"Ken",
+	skillList: ["Shellac", "Pedicure"],
+	ratingListID: [2],
+	salonListID: [2],
+	languageList: ["Italian", "English"]
 }
 )
 techniciansCollection.insert(
 {
 	registeredUserID: 7,
 	technicianID: 4,
-	skillListID: 2,
-	ratingListID: 2,
-	salonListID: 2,
-	languageListID: 2
+	name:"Candace",
+	skillList: ["Manicure"],
+	ratingListID: [2],
+	salonListID: [2],
+	languageList:["Vietnamese", "English"]
 }
 )
 techniciansCollection.insert(
 {
 	registeredUserID: 10,
 	technicianID: 5,
-	skillListID: 2,
-	ratingListID: 2,
-	salonListID: 2,
-	languageListID: 2
+	name:"Jameka",
+	skillList:["Pedicure"],
+	ratingListID: [3],
+	salonListID: [2],
+	languageList: ["English"]
 }
 )
 

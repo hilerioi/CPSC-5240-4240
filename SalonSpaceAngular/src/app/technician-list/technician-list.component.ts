@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { SalonSpaceService } from '../salon-space.service';
+import ITechnicianModelAngular from '../share/ITechnicianModelAngular';
 
 @Component({
   selector: 'app-technician-list',
@@ -6,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./technician-list.component.less']
 })
 export class TechnicianListComponent implements OnInit {
-
-  constructor() { }
-
+  techniciansObservable: Observable<ITechnicianModelAngular[]>;
+  constructor(salon$:SalonSpaceService) {
+     this.techniciansObservable=salon$.getTechnicianLists();
+   }
   ngOnInit(): void {
   }
 
