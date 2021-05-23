@@ -9,15 +9,14 @@ var should = chai.should();
 var http = require('http');
 chai.use(chaiHttp);
 
-describe('Test To Do lists result', function () {
-//	this.timeout(15000);
+describe('Test Technician lists result', function () {
 
 	var requestResult;
 	var response;
 		 
     before(function (done) {
         chai.request("http://localhost:8080")
-			.get("/app/list")
+			.get("/app/technician")
 			.end(function (err, res) {
 				requestResult = res.body;
 				response = res;
@@ -37,18 +36,21 @@ describe('Test To Do lists result', function () {
 	it('The first entry in the array has known properties', function(){
 	    expect(requestResult[0]).to.include.keys('name');
 	    expect(requestResult[0]).to.have.property('_id');
-		expect(response.body[0]).to.have.deep.property('list');
+		expect(response.body[0]).to.have.deep.property('skillList');
 		expect(response.body).to.not.be.a.string;
 	});
 	it('The elements in the array have the expecte properties', function(){
 		expect(response.body).to.satisfy(
 			function (body) {
 				for (var i = 0; i < body.length; i++) {
-					expect(body[i]).to.have.property('name');
-					expect(body[i]).to.have.property('description');
-					expect(body[i]).to.have.property('listId');
-					expect(body[i]).to.have.property('state').to.have.length(1);
-					expect(body[i]).to.have.property('owner').that.is.a('string');
+					expect(body[i]).to.have.property('skillList');
+					expect(body[i]).to.have.property('ratingListID');
+					expect(body[i]).to.have.property('salonListID');
+					expect(body[i]).to.have.property('languageList');
+					expect(body[i]).to.have.property('registeredUserID');
+					expect(body[i]).to.have.property('technicianID');
+					expect(body[i]).to.have.property('technicianID').that.is.a('number');
+					expect(body[i]).to.have.property('name').that.is.a('string');
 				}
 				return true;
 			});

@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed,inject } from '@angular/core/testing';
 
 import { SalonSpaceService } from './salon-space.service';
 
 describe('SalonSpaceService', () => {
-  let service: SalonSpaceService;
+ // let service: SalonSpaceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SalonSpaceService);
+    providers: [SalonSpaceService]
   });
 
-  it('should be created', () => {
+  it('should be created', inject([SalonSpaceService], (service: SalonSpaceService) => {
     expect(service).toBeTruthy();
-  });
+  }));
 });
