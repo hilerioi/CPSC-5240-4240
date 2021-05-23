@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import IRatingModelAngular from '../share/IRatingModelAngular';
 
 @Component({
   selector: 'app-rating-published',
