@@ -14,10 +14,18 @@ let mongooseObj = DataAccess.mongooseInstance;
 class TechnicianModel {
     public schema:any;
     public model:any;
+   // public RegisteredUsers:RegisteredUserModel;
+  
+    //public Ratings:RatingModel;
+    //public Salons:SalonModel;
+    
 
     public constructor() {
         this.createSchema();
         this.createModel();
+        
+        //this.Ratings = new RatingModel();
+        //this.Salons = new SalonModel();
     }
 
     public createSchema(): void {
@@ -40,14 +48,16 @@ class TechnicianModel {
     public retrieveAllTechnicians(response:any): any {
         var query = this.model.find({});
         query.exec( (err, itemArray) => {
+            console.log(itemArray);
             response.json(itemArray) ;
         });
         
     }
     
     public retrieveTechniciansDetails(response:any, filter:Object) {
-        var query = this.model.findOne({technicianID: '1'});
+        var query = this.model.findOne(filter);
         query.exec( (err, itemArray) => {
+            console.log(itemArray);
             response.json(itemArray);
         });
     }

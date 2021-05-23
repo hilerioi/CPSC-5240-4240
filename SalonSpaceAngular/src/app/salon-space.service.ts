@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import ITechnicianModelAngular from './share/ITechnicianModelAngular';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SalonSpaceService {
+  hostUrl:string = 'http://localhost:8080/';
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+  getTechnicianLists() {
+    return this.httpClient.get<ITechnicianModelAngular[]>( this.hostUrl + 'app/technician');// + 'json/lists.json'
+  }
 }
