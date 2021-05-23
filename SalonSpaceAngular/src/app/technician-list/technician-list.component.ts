@@ -13,6 +13,7 @@ export class TechnicianListComponent implements OnInit {
   constructor(salon$:SalonSpaceService) {
      this.techniciansObservable=salon$.getTechnicianLists();
    }
+   
   ngOnInit(): void {
   }
 

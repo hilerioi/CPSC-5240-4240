@@ -1,44 +1,46 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const Mongoose = require("mongoose");
-const DataAccess_1 = require("../DataAccess");
-let mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
-let mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
-class ClientModel {
-    constructor() {
+exports.__esModule = true;
+exports.ClientModel = void 0;
+var Mongoose = require("mongoose");
+var DataAccess_1 = require("../DataAccess");
+var mongooseConnection = DataAccess_1.DataAccess.mongooseConnection;
+var mongooseObj = DataAccess_1.DataAccess.mongooseInstance;
+var ClientModel = /** @class */ (function () {
+    function ClientModel() {
         this.createSchema();
         this.createModel();
     }
-    createSchema() {
+    ClientModel.prototype.createSchema = function () {
         this.schema = new Mongoose.Schema({
             registeredUserID: Number,
             points: Number,
             ratingListID: Array(),
             discountListID: Array()
         }, { collection: 'clients' });
-    }
-    createModel() {
+    };
+    ClientModel.prototype.createModel = function () {
         this.model = mongooseConnection.model("Clients", this.schema);
-    }
-    retrieveAllClients(response) {
+    };
+    ClientModel.prototype.retrieveAllClients = function (response) {
         var query = this.model.find({});
-        query.exec((err, clientsArray) => {
+        query.exec(function (err, clientsArray) {
             response.json(clientsArray);
         });
-    }
-    retrieveClientDetails(response, filter) {
+    };
+    ClientModel.prototype.retrieveClientDetails = function (response, filter) {
         var query = this.model.findOne(filter);
-        query.exec((err, client) => {
+        query.exec(function (err, client) {
             response.json(client);
         });
-    }
-    retrieveClientCount(response) {
+    };
+    ClientModel.prototype.retrieveClientCount = function (response) {
         console.log("retrieve Client Count ...");
         var query = this.model.estimatedDocumentCount();
-        query.exec((err, numberOfClients) => {
+        query.exec(function (err, numberOfClients) {
             console.log("numberOfClients: " + numberOfClients);
             response.json(numberOfClients);
         });
-    }
-}
+    };
+    return ClientModel;
+}());
 exports.ClientModel = ClientModel;

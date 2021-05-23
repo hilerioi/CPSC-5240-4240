@@ -1,3 +1,3 @@
-export class Technicians {
+export class Ratings {
    
 }
