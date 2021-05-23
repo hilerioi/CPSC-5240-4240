@@ -70,11 +70,8 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "option": {
-            "browserTarget": "SalonSpaceAngular:build"
-          },
           "configurations": {
-            "production": { 
+            "production": {
               "browserTarget": "SalonSpaceAngular:build:production"
             },
             "development": {
