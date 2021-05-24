@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import ITechnicianModelAngular from './share/ITechnicianModelAngular';
+import { Observable } from 'rxjs';
+import IRatingModelAngular from './share/IRatingModelAngular';
 
 @Injectable()
 export class SalonSpaceService {
@@ -10,5 +12,8 @@ export class SalonSpaceService {
 
   getTechnicianLists() {
     return this.httpClient.get<ITechnicianModelAngular[]>( this.hostUrl + 'app/technician');// + 'json/lists.json'
+  }
+  getRatings() : Observable<IRatingModelAngular[]> {
+    return this.httpClient.get<IRatingModelAngular[]>(this.hostUrl + 'app/rating')
   }
 }

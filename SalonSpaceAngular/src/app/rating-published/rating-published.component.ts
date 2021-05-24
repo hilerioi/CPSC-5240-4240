@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import IRatingModelAngular from '../share/IRatingModelAngular';
-import { RatingPublishedService } from '../rating-published.service';
-import { Observable, of } from 'rxjs';
-import { Ratings } from '../share/Ratings';
+import { SalonSpaceService } from '../salon-space.service';
 
 @Component({
   selector: 'app-rating-published',
@@ -13,11 +10,11 @@ export class RatingPublishedComponent implements OnInit {
   ratings : any
 
   getRatings(): void {
-    this.ratingPublishedService.getRatings().subscribe((data)=>this.ratings=data)
+    this.salonSpaceService.getRatings().subscribe((data)=>this.ratings=data)
     
   } 
   
-  constructor(private ratingPublishedService: RatingPublishedService) { }
+  constructor(private salonSpaceService: SalonSpaceService) { }
 
   ngOnInit(): void {
     this.getRatings();
