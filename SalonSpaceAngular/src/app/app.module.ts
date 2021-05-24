@@ -17,7 +17,7 @@ import { RatingPublishedComponent } from './rating-published/rating-published.co
     WelcomeComponent,
     TechnicianListComponent,
     TechnicianDetailsComponent,
-    RatingPublishedComponent
+    RatingPublishedComponent,
   ],
   imports: [
     BrowserModule,
