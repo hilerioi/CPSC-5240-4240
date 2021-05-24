@@ -29,18 +29,18 @@ describe('Test Technician Detail result', function () {
     it('Should return an array object with 1 object', function (){
 		expect(response).to.have.status(200);
 //        expect(response.body).to.be.an.object;
-		expect(response.body).to.have.length.below(2);
-        expect(response.body).to.have.length.above(0);
 		expect(response).to.have.headers;
+        expect(response.body).to.satisfy(
+			function (body) {
+				for (var i = 0; i < body.length; i++) {
+					expect(body[i]).to.have.length.above(0)
+					expect(body[i]).to.have.length.below(2);
+				}
+				return true;
+			});
     });
     
-    it('The entry in the array has known properties', function(){
-	    expect(requestResult[0]).to.include.keys('name');
-	    expect(requestResult[0]).to.have.property('_id');
-		expect(response.body[0]).to.have.deep.property('skillList');
-		expect(response.body).to.not.be.a.string;
-	});
-	it('The elements in the array have the expected properties', function(){
+	it('The elements in the object have the expected properties', function(){
 		expect(response.body).to.satisfy(
 			function (body) {
 				for (var i = 0; i < body.length; i++) {
