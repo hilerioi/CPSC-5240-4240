@@ -1,6 +1,8 @@
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var async = require('async');
+const asserttype = require('chai-asserttype');
+chai.use(asserttype);
 
 var assert = chai.assert;
 var expect = chai.expect;
@@ -26,18 +28,13 @@ describe('Test Technician Detail result', function () {
 			});
         });
     
-    it('Should return an array object with 1 object', function (){
+    it('Should return 1 object', function (){
 		expect(response).to.have.status(200);
 //        expect(response.body).to.be.an.object;
 		expect(response).to.have.headers;
-        expect(response.body).to.satisfy(
-			function (body) {
-				for (var i = 0; i < body.length; i++) {
-					expect(body[i]).to.have.length.above(0)
-					expect(body[i]).to.have.length.below(2);
-				}
-				return true;
-			});
+        expect(response).to.be.json;
+        expect(response.body).to.be.object();
+        
     });
     
 	it('The elements in the object have the expected properties', function(){
