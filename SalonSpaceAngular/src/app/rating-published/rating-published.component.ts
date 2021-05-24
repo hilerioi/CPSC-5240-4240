@@ -10,8 +10,10 @@ import { Ratings } from '../share/Ratings';
   styleUrls: ['./rating-published.component.less']
 })
 export class RatingPublishedComponent implements OnInit {
+  ratings : any
+
   getRatings(): void {
-    this.ratingPublishedService.getRatings().subscribe((data)=>console.log(data))
+    this.ratingPublishedService.getRatings().subscribe((data)=>this.ratings=data)
     
   } 
   
