@@ -1,0 +1,59 @@
+<!-- 
+<body class='container background'>
+	<main role="main" class="inner cover text-center pad-top">
+        <h1 class="cover-heading">Ratings</h1>
+      </main>
+
+      <table style="width: 80%">
+        <tr>
+          <th>Stars</th>
+          <th>Review</th>
+        </tr>
+        <tr *ngFor='let rating of ratings'>
+          <td>{{rating.stars}}</td>
+          <td>{{rating.text}}</td>
+        </tr>
+      </table>
+
+
+</body> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Ratings</h2>
+
+<table>
+  <tr>
+    <th>Stars</th>
+    <th>Review</th>
+  </tr>
+  <tr *ngFor='let rating of ratings'>
+    <td>{{rating.stars}}</td>
+    <td>{{rating.text}}</td>
+  </tr>
+</table>
+
+</body>
+</html>
+
