@@ -1,18 +1,15 @@
-var http = require('http');
-var fs = require('fs');
-var url = require('url');
+http = require('http');
+fs = require('fs');
+url = require('url');
 
-var message = [
-	'Hello World',
-	'From a basic Node.js server',
-	'Take Luck'
-];
+const port = 8080;
 
 http.createServer( function (req, res) {
 	res.setHeader('Content-Type', "text/html");
 	res.writeHead(200);
 
-	var filename = url.parse(req.url).pathname.slice(1);
+	let filename = req.url;
+	console.log('filename:' + filename);
 	
 	if (filename === '') {
 		filename = 'index.html';
@@ -20,11 +17,12 @@ http.createServer( function (req, res) {
 	
 	console.log('filename: ' + filename);
 	
-	fs.readFile('./pages/' + filename, 'utf8', function (err, data) {
+	fs.readFile('./pages' + filename, 'utf8', function (err, data) {
 	  if (err) {
 		return console.log(err);
 	  }
 	  res.end(data);
 	});
 	
-}).listen(8080);
+}).listen(port);
+console.log("Server started listening in port " + port);

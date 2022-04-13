@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
+exports.App = void 0;
 var express = require("express");
-var logger = require("morgan");
 var url = require("url");
 var bodyParser = require("body-parser");
 // Creates and configures an ExpressJS web server.
@@ -14,21 +14,12 @@ var App = /** @class */ (function () {
     }
     // Configure Express middleware.
     App.prototype.middleware = function () {
-        this.express.use(logger('dev'));
         this.express.use(bodyParser.json());
         this.express.use(bodyParser.urlencoded({ extended: false }));
     };
     // Configure API endpoints.
     App.prototype.routes = function () {
-        /* This is just to get up and running, and to make sure what we've got is
-         * working so far. This function will change when we start to add more
-         * API endpoints */
         var router = express.Router();
-        // router.get('/', (req, res, next) => {
-        //   res.json({
-        //     message: 'Hello World!'
-        //   });
-        // });
         router.get('/one', function (req, res, next) {
             res.send('request one');
         });
@@ -42,6 +33,18 @@ var App = /** @class */ (function () {
             var sum = value1 + value2;
             //var sum = query.var1 + query.var2;
             var msg = 'addition of ' + query.var1 + ' plus ' + query.var2 + ' equals ' + sum;
+            console.log(msg);
+            res.send(msg);
+        });
+        router.post('/add', function (req, res, next) {
+            var payload = req.body;
+            console.log('var1:' + payload.var1);
+            console.log('var2:' + payload.var2);
+            var value1 = parseInt(payload.var1);
+            var value2 = parseInt(payload.var2);
+            var sum = value1 + value2;
+            //var sum = query.var1 + query.var2;
+            var msg = 'addition of ' + value1 + ' plus ' + value2 + ' equals ' + sum;
             console.log(msg);
             res.send(msg);
         });
@@ -63,6 +66,7 @@ var App = /** @class */ (function () {
             fname2 = value + "-ABC";
             next();
         });
+        router.post;
         this.express.use('/', router);
         this.express.use('/images', express.static(__dirname + '/img'));
         this.express.use('/', express.static(__dirname + '/pages'));

@@ -1,6 +1,5 @@
 import * as path from 'path';
 import * as express from 'express';
-import * as logger from 'morgan';
 import * as url from 'url';
 import * as bodyParser from 'body-parser';
 
@@ -19,24 +18,14 @@ class App {
 
   // Configure Express middleware.
   private middleware(): void {
-    this.express.use(logger('dev'));
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
   }
 
   // Configure API endpoints.
   private routes(): void {
-    /* This is just to get up and running, and to make sure what we've got is
-     * working so far. This function will change when we start to add more
-     * API endpoints */
     let router = express.Router();
     
-    // router.get('/', (req, res, next) => {
-    //   res.json({
-    //     message: 'Hello World!'
-    //   });
-    // });
-
     router.get('/one', (req, res, next) => {
         res.send('request one');
     });
@@ -56,43 +45,61 @@ class App {
         var msg = 'addition of ' + query.var1 + ' plus ' + query.var2 + ' equals ' + sum;
 
         console.log(msg);
-
         res.send(msg);
     });
 
-    let fname2;
+    router.post('/add', (req, res, next) => {
+      let payload:any = req.body;
 
-    router.get('/name/:fname', (req, res, next) => {
-        let name:string;
+      console.log('var1:' + payload.var1);
+      console.log('var2:' + payload.var2);
 
-	    console.log(':fname = ' + req.params.fname);
+       let value1: number = parseInt(payload.var1);
+       let value2: number = parseInt(payload.var2);
+       let sum: number = value1 + value2;
+      
+      //var sum = query.var1 + query.var2;
+      var msg = 'addition of ' + value1 + ' plus ' + value2 + ' equals ' + sum;
 
-        if (req.params.fname === 'israelh') {
-            name = fname2 + ' hilerio';
-        }
-        else {
-            name = fname2 + ' world';
-        }
+      console.log(msg);
+      res.send(msg);
+  });
 
-        console.log(name);
+  let fname2:string;
 
-        res.send("Your name is: "  + name);
-    });
+  router.get('/name/:fname', (req, res, next) => {
+      let name:string;
 
-    router.param('fname', (req, res, next, value) => {
-        console.log('The param value is: ' + value);
+    console.log(':fname = ' + req.params.fname);
 
-        fname2 = value + "-ABC";
+    if (req.params.fname === 'israelh') {
+        name = fname2 + ' hilerio';
+    }
+    else {
+        name = fname2 + ' world';
+    }
 
-        next();
-    });
+    console.log(name);
 
-    this.express.use('/', router);
+    res.send("Your name is: "  + name);
+  });
 
-    this.express.use('/images', express.static(__dirname+'/img'));
-    this.express.use('/', express.static(__dirname+'/pages'));
+  router.param('fname', (req, res, next, value) => {
+      console.log('The param value is: ' + value);
 
-  }
+      fname2 = value + "-ABC";
+
+      next();
+  });
+
+  router.post
+
+  this.express.use('/', router);
+
+  this.express.use('/images', express.static(__dirname+'/img'));
+  this.express.use('/', express.static(__dirname+'/pages'));
+
+}
 
 }
 
