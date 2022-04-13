@@ -18,7 +18,7 @@ To execute the server db and then the node server with the following commands:
 1. start.toDoSample.cmd
 
 //populate the DB server with sample data
-2. startdbClient.toDoSample.cmd
+2. startdbClient.toDoSample2.cmd
 >load ('createDB/createToDoSampleData.js');
 >load ('createDB/createAdminUser.js');
 >exit
@@ -27,7 +27,7 @@ To execute the server db and then the node server with the following commands:
 3. npm install
 
 //Compile Node/Express Server.  You may need to go to all subdirectories and compile the ts files.
-4. tsc AppServre.ts
+4. tsc AppServer.ts
 
 //Execute Node/Express server on port 8080
 5. node AppServer.js 
