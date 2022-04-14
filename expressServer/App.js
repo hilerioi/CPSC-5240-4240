@@ -36,6 +36,17 @@ var App = /** @class */ (function () {
             console.log(msg);
             res.send(msg);
         });
+        router.get('/add2/:var1/:var2', function (req, res, next) {
+            console.log('var1:' + req.params.var1);
+            console.log('var2:' + req.params.var2);
+            var value1 = parseInt(req.params.var1);
+            var value2 = parseInt(req.params.var2);
+            var sum = value1 + value2;
+            //var sum = query.var1 + query.var2;
+            var msg = 'addition of ' + value1 + ' plus ' + value2 + ' equals ' + sum;
+            console.log(msg);
+            res.send(msg);
+        });
         router.post('/add', function (req, res, next) {
             var payload = req.body;
             console.log('var1:' + payload.var1);
@@ -66,7 +77,6 @@ var App = /** @class */ (function () {
             fname2 = value + "-ABC";
             next();
         });
-        router.post;
         this.express.use('/', router);
         this.express.use('/images', express.static(__dirname + '/img'));
         this.express.use('/', express.static(__dirname + '/pages'));

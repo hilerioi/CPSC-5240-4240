@@ -48,6 +48,21 @@ class App {
         res.send(msg);
     });
 
+    router.get('/add2/:var1/:var2', (req, res, next) => {
+      console.log('var1:' + req.params.var1);
+      console.log('var2:' + req.params.var2);
+
+       let value1: number = parseInt(req.params.var1);
+       let value2: number = parseInt(req.params.var2);
+       let sum: number = value1 + value2;
+      
+      //var sum = query.var1 + query.var2;
+      var msg = 'addition of ' + value1 + ' plus ' + value2 + ' equals ' + sum;
+
+      console.log(msg);
+      res.send(msg);
+  });
+
     router.post('/add', (req, res, next) => {
       let payload:any = req.body;
 
@@ -91,8 +106,6 @@ class App {
 
       next();
   });
-
-  router.post
 
   this.express.use('/', router);
 

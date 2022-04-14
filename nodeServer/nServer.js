@@ -11,13 +11,13 @@ http.createServer( function (req, res) {
 	let filename = req.url;
 	console.log('filename:' + filename);
 	
-	if (filename === '') {
+	if (filename === '/') {
 		filename = 'index.html';
 	}
 	
 	console.log('filename: ' + filename);
 	
-	fs.readFile('./pages' + filename, 'utf8', function (err, data) {
+	fs.readFile('./pages/' + filename, 'utf8', function (err, data) {
 	  if (err) {
 		return console.log(err);
 	  }
