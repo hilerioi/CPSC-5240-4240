@@ -17,8 +17,9 @@ To execute the server db and then the node server with the following commands:
 <br>
 //Starts the DB server on port 3000
 1. start.toDoSample.cmd
-<br>
+
 //populate the DB server with sample data
+<br>
 2. startdbClient.toDoSample2.cmd
 <br>
 >use admin
@@ -29,9 +30,12 @@ To execute the server db and then the node server with the following commands:
 <br>
 >exit
 <br>
+
 //Starts Node/Express server on port 8080
+<br>
 3. node Server.js or node AppServer.js 
 <br>
+
 To test server #3, try the following URL on the browser, while the server is running:
 * http://localhost:8080/all
 * http://localhost:8080/vehicle/ferrari
