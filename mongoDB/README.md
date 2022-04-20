@@ -13,6 +13,7 @@ Make sure you install the node.js server and Mongo DB sofware from the side.  En
 To execute the server db and then the node server with the following commands:
 <br>
 //create the db file directory
+<br>
 0. md db
 <br>
 //Starts the DB server on port 3000
@@ -24,14 +25,13 @@ To execute the server db and then the node server with the following commands:
 <br>
 * use admin;
 * db.createUser( {user: "dbAdmin", pwd: "test", roles: [ "readWriteAnyDatabase", "dbAdminAnyDatabase", "clusterAdmin"] });
-<br>
 * load ('createTransportation.mongo2.js');
-<br>
 * exit
 <br>
 
 //Starts Node/Express server on port 8080
 <br>
+
 3. node Server.js or node AppServer.js 
 <br>
 
