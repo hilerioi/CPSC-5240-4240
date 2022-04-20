@@ -22,13 +22,13 @@ To execute the server db and then the node server with the following commands:
 <br>
 2. startdbClient.toDoSample2.cmd
 <br>
->use admin
+* use admin
 <br>
->db.createUser( {user: "dbAdmin", pwd: "test", roles: [ "readWriteAnyDatabase", "dbAdminAnyDatabase", "clusterAdmin"] });
+* db.createUser( {user: "dbAdmin", pwd: "test", roles: [ "readWriteAnyDatabase", "dbAdminAnyDatabase", "clusterAdmin"] });
 <br>
->load ('createTransportation.mongo2.js');
+* load ('createTransportation.mongo2.js');
 <br>
->exit
+* exit
 <br>
 
 //Starts Node/Express server on port 8080
