@@ -12,10 +12,12 @@ Make sure you install the node.js server and Mongo DB sofware from the side.  En
 
 To execute the server db and then the node server with the following commands:
 <br>
+
 //create the db file directory
 <br>
 0. md db
 <br>
+
 //Starts the DB server on port 3000
 1. start.toDoSample.cmd
 
