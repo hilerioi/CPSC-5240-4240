@@ -19,7 +19,9 @@ To execute the server db and then the node server with the following commands:
 1. start.toDoSample.cmd
 
 //populate the DB server with sample data
-2. startdbClient.toDoSample.cmd
+2. startdbClient.toDoSample2.cmd
+>use admin
+>db.createUser( {user: "dbAdmin", pwd: "test", roles: [ "readWriteAnyDatabase", "dbAdminAnyDatabase", "clusterAdmin"] });
 >load ('createTransportation.mongo2.js');
 >exit
 

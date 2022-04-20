@@ -1,11 +1,11 @@
 import * as path from 'path';
 import * as express from 'express';
-import * as logger from 'morgan';
 import * as mongodb from 'mongodb';
 import * as url from 'url';
 import * as bodyParser from 'body-parser';
-var MongoClient = require('mongodb').MongoClient;
-var Q = require('q');
+let MongoClient = mongodb.MongoClient;
+
+//var Q = require('q');
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -19,114 +19,125 @@ class App {
   constructor() {
     this.expressApp = express();
     this.middleware();
-    this.openDbConnection();
     this.routes();
   }
 
-  public openDbConnection(): void {
+  async openDbConnection() : Promise<void> {
     if (this.dbConnection == null) {
-        MongoClient.connect(this.mongoDBConnection, (err, dbConnection) => {
-            this.dbConnection = dbConnection;
-            console.log("Connected correctly to MongoDB server.");
-        });
+      try {
+        this.dbConnection = await MongoClient.connect(this.mongoDBConnection);
+        console.log("Connected correctly to MongoDB server.");
+      }
+      catch(err){
+        console.log("Unable to connect to MongodDB server");
+      }
     }
   }
 
   // Configure Express middleware.
-  private middleware(): void {
-    this.expressApp.use(logger('dev'));
+  private async middleware(): Promise<void> {
     this.expressApp.use(bodyParser.json());
     this.expressApp.use(bodyParser.urlencoded({ extended: false }));
+    await this.openDbConnection();
   }
 
-  public accessTransportation(res, payload, api): any  {
-    var deferred = Q.defer();
-    console.log("query Transportation");
+  async accessTransportation(res, payload, api) : Promise<any> {
+//    var deferred = Q.defer();
+    console.log("db operation: " + api);
 
     if (this.dbConnection != null) {
-      console.log("Using Connection")
-      this.dbConnection.collection('carCollection2', (err, nCollection) => {
-        let query = payload;
-        if (api == "query") {
-          nCollection.find(query, (err, cursor) => {
-              cursor.toArray( (err, itemArray) => {
-/*                    var list = "<h1>Request</h1>";
-                  for (var i = 0; i < itemArray.length; i++) {
-                      list += "<h3>" + itemArray[i].vehicle + " : " + itemArray[i].speed + "mph</h3>";
-                  }
-*/
-                  let list = JSON.stringify(itemArray);
-                  return deferred.resolve(list);
-              });
-          });
+      console.log("Using Connection");
+      let carCollection = this.dbConnection.collection('carCollection2');        
+      let query = payload;
+      
+      if (api === "query") {
+        try {
+          let result = await carCollection.find(query);
+          return result.toArray();  
         }
-        else if (api == "insert") {
-          console.log("inserting payload:" + payload);
-          nCollection.insert(payload);
-          return deferred.resolve({"result": "added"});
+        catch(err) {
+          console.log("error querying all results.");
         }
-        else if (api == "delete") {
-          console.log("deleting payload:" + payload.toString());
-          nCollection.deleteOne(payload, function(err2, obj) {
-            if (err2) {
-              res.statusCode = 400;
-              return deferred.resolve({"result": "error deleting"});
-            }
-                 // n in results indicates the number of records deleted
-            if(obj.result.n == 0){
-              res.statusCode = 400;
-              //res.send("delete : record not found");
-              return deferred.resolve({"delete" : "record not found"});
-            } 
-            else {
-              res.statusCode = 200;
-              return deferred.resolve({"result": "deleted"});
-            }
-          });
+      }
+      else if (api === "insert") {
+        try {
+          console.log("inserting payload:" + JSON.stringify(payload));
+          let result = await carCollection.insert(payload);
+          console.log(`Updated ${result.result.n} documents`);
+          return {"result": "document added"};
         }
-      });
-      console.log("Making Async Call to retrieve Collection: carCollection");
+        catch(err) {
+          console.error(`Something went wrong: ${err}`);
+          return {"result": "error inserting document"};
+        }
+      }
+      else if (api === "delete") {
+        try {
+          console.log("deleting payload:" + JSON.stringify(payload));
+          let result = await carCollection.deleteOne(payload);
+          if (result.result.n == 0){
+            res.statusCode = 400;
+            return {"result": "record not found"}
+          }
+          else {
+            res.statusCode = 200;
+            return {"result": "deleted"};  
+          }
+        }
+        catch(err) {
+          res.statusCode = 400;
+          return {"result": "error deleting"};
+        }
+      }
     }
     else {
           console.log("Connection lost");
     }
-
-    return deferred.promise;
-  }
+}
 
   // Configure API endpoints.
   private routes(): void {
     let router = express.Router();
     
-    router.get('/all', (req, res) => {
-          this.accessTransportation(res, {}, "query").then(
-            (list) => { res.send(list); });
+    router.get('/all', async (req, res) => {
+        const list = await this.accessTransportation(res, {}, "query");
+        res.send(list);
     });
 
-    router.post('/add', (req, res) => {
+    router.post('/add', async (req, res) => {
       let bodyRequest = req.body;
-      this.accessTransportation(res, bodyRequest, "insert").then(
-        (result) => { res.send(result); });
+      console.log("payload in body:" + bodyRequest);
+      const result = await this.accessTransportation(res, bodyRequest, "insert");
+      res.send(result);
     });
 
-    router.delete('/remove', (req, res) =>{
+    router.delete('/remove', async (req, res) =>{
       let bodyRequest = req.body;
-      this.accessTransportation(res, bodyRequest, "delete").then(
-        (result) => { res.send(result); });
+      const result = await this.accessTransportation(res, bodyRequest, "delete");
+      res.send(result);
     });
 
-    router.get('/search', (req, res) => {
+    router.get('/search', async (req, res) => {
         var urlParts = url.parse(req.url, true);
         var query = urlParts.query;
         var msg = 'search for ' + query.var1;
         console.log(msg);
-        this.accessTransportation(res, {speed: query.var1}, "query").then((list) =>{
-            res.send(list);
-        });
+        const list = await this.accessTransportation(res, {speed: query.var1}, "query");
+        res.send(list);
     });
 
+    //col1.find({"speed": {$gte: "150"}})
+    router.get('/search2', async (req, res) => {
+      var urlParts = url.parse(req.url, true);
+      var query = urlParts.query;
+      var msg = 'search for ' + query.var1;
+      console.log(msg);
+      const list = this.accessTransportation(res, {speed: {$gte: query.var1}}, "query");
+      res.send(list);
+  });
+
     router.get('/vehicle/:vname', (req, res) => {
-        var vname = req.param('vname');
+        var vname = req.params.vname;
         console.log('Query for vehicle name: ' + vname);
         this.accessTransportation(res, {vehicle: vname}, "query").then((list) => {
             res.send(list);
