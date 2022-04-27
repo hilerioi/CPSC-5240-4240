@@ -1,15 +1,8 @@
-//import * as path from 'path';
 import * as express from 'express';
-import * as logger from 'morgan';
-//import * as mongodb from 'mongodb';
-//import * as url from 'url';
 import * as bodyParser from 'body-parser';
-//var MongoClient = require('mongodb').MongoClient;
-//var Q = require('q');
-
 import {ListModel} from './model/ListModel';
 import {TaskModel} from './model/TaskModel';
-//import {DataAccess} from './DataAccess';
+import * as crypto from 'crypto';
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -18,21 +11,18 @@ class App {
   public expressApp: express.Application;
   public Lists:ListModel;
   public Tasks:TaskModel;
-  public idGenerator:number;
 
   //Run configuration methods on the Express instance.
   constructor() {
     this.expressApp = express();
     this.middleware();
     this.routes();
-    this.idGenerator = 102;
     this.Lists = new ListModel();
     this.Tasks = new TaskModel();
   }
 
   // Configure Express middleware.
   private middleware(): void {
-    this.expressApp.use(logger('dev'));
     this.expressApp.use(bodyParser.json());
     this.expressApp.use(bodyParser.urlencoded({ extended: false }));
   }
@@ -47,16 +37,16 @@ class App {
     });
 
     router.post('/app/list/', (req, res) => {
-        console.log(req.body);
+      const id = crypto.randomBytes(16).toString("hex");
+      console.log(req.body);
         var jsonObj = req.body;
-        //jsonObj.listId = this.idGenerator;
+        jsonObj.listId = id;
         this.Lists.model.create([jsonObj], (err) => {
             if (err) {
                 console.log('object creation failed');
             }
         });
-        res.send(this.idGenerator.toString());
-        this.idGenerator++;
+        res.send('{"id":"' + id + '"}');
     });
 
     router.get('/app/list/:listId', (req, res) => {
