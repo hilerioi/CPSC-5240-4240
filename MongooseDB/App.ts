@@ -49,6 +49,18 @@ class App {
         res.send('{"id":"' + id + '"}');
     });
 
+    router.post('/app/list2/', (req, res) => {
+      const id = crypto.randomBytes(16).toString("hex");
+      console.log(req.body);
+        var jsonObj = req.body;
+        jsonObj.listId = id;
+        let doc = new this.Lists.model(jsonObj);
+        doc.save((err) => {
+           console.log('object creation failed');
+        });
+        res.send('{"id":"' + id + '"}');
+    });
+
     router.get('/app/list/:listId', (req, res) => {
         var id = req.params.listId;
         console.log('Query single list with id: ' + id);
