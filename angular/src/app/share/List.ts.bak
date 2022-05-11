@@ -1,6 +1,0 @@
-import { Item } from './Item';
-
-export class List {
-    name: string;
-    items: Item[];
-}
