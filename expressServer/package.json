@@ -10,7 +10,7 @@
     "@types/node": "^9.6.5",
     "body-parser": "^1.17.1",
     "debug": "^2.6.3",
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "npm": "^8.6.0",
     "path": "^0.12.7",
     "typescript": "^2.2.2"
