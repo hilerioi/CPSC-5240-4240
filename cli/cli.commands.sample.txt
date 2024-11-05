@@ -1,48 +1,353 @@
 npm uninstall -g @angular/cli
-npm cache clean
 npm install -g @angular/cli
 
 
-ng new social-app
-//generates the app, module, and bootstrap component
+ng new todo-application --no-standalone
+//generates the app, module, and bootstrap component w/ an app.modules.ts file
+//also generates the initial routing map
 
-cd social-app
+cd todo-application
+code .
 ng serve
 
 Use browser to go to: http://localhost:4200/
 
-
-ng g component welcome
-//creates dir with all parts of welcome
+ng g component welcomepage
+//creates a welcome component
 //updates the module file
 
-ng g component topics
-cd topics
-ng g component topic-entry
+ng g component todolists
+//creates the todo list component
+//updates the module file
 
-cd ..
-ng g component posts
-cd posts
-ng g component post-entry
+ng g component todotasks
+//creates the todo taks component
+//updates the module file
 
-
-ng g service social
+ng g service todoproxy
 //generate service skeleton
 
+show the <router-outlet> tag inside app.component class
 
-ng g class app-route
-//use this class to create the routing information
-//populate routing information on the new class
-
-modify the app.component class to add the <router-outlet> tag
-
-modify the module class to add the service and router classes
-update the [providers: ] info with the service import
-update the [imports: ] info with the router import
-
-rename the selectors because the cli adds the prefix of "app-" to all of the created components
-
-remember not to add elements inside the <p> element.
+upate app-routing.module.ts with:
+  { path: '', component: WelcomepageComponent },
+  { path: 'list', component: TodolistsComponent },
+  { path: 'list/:id', component: TodotasksComponent}
 
 
+import { WelcomepageComponent } from './welcomepage/welcomepage.component';
+import { TodolistsComponent } from './todolists/todolists.component';
+import { TodotasksComponent } from './todotasks/todotasks.component';
 
+
+modify the module class to add the service
+update the [providers: ] info with:
+* providers: [TodoproxyService],
+
+
+update the [imports: ] info with the service import
+* import { TodoproxyService } from './todoproxy.service';
+
+
+Update the Welcome Page HTLM fragment with the <a> tags below to navigate to each page:
+<div><a [routerLink]="['/list']" class="btn btn-lg btn-primary" role="button">View All Lists</a></div>
+<div><a [routerLink]="['/list/1']" class="btn btn-lg btn-primary" role="button">View List 1</a></div>
+
+Add the Bootstrap libraries from the CDN in the index.html file:
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<!-- Optional theme -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+Remove the sample HTML from app.component.html
+
+
+Remove the old text and add this html to the welcomepage:
+
+
+<div class="jb-body position-relative p-5 text-center text-muted border border-dashed rounded-5">
+	<div class="jumbotron">
+		<h1>To Do List</h1>
+		<p>Keep track of all of things you need to do by creating lists and sharing items with friends.</p>
+		<p>
+			<a [routerLink]="['/list']" class="btn btn-lg bt-body" role="button">View</a>
+		</p>
+	</div>
+</div>
+
+
+Add the following text to the welcomepage component CSS page:
+.jb-body {
+    /*
+    background-image: url ("https://www.istockphoto.com/photo/to-do-list-text-on-notepad-gm1285308242-382184795");
+    */
+    background-color: rgb(239, 193, 113);
+}
+.bt-body {
+    background-color: rgb(23, 95, 228);
+    color: white;
+}
+
+
+Inside the todoproxy.service.ts class update it with:
+
+  hostUrl:string = 'http://localhost:8080/';
+
+  constructor(private httpClient: HttpClient) { }
+
+  getListsIndex() {
+    return this.httpClient.get<any[]>( this.hostUrl + 'json/lists.json');
+  }
+
+  getItems(index: string) {
+    return this.httpClient.get( this.hostUrl + 'json/lists/' + index + '.json');
+  }
+
+
+Make sure to update the imports section of the app.module.ts with:
+import { provideHttpClient } from '@angular/common/http';
+
+modify the module class to add the service
+update the [providers: ] info with:
+* providers: [provideHttpClient(), TodoproxyService],
+
+Make sure to update the todoproxy.service.ts imports with:
+import { HttpClient } from '@angular/common/http';
+
+Next update the todolist component with:
+
+<div class="container" >
+	<div class="panel panel-default" style="border-width: 0px; border-style:solid">
+		<div class="panel-default">
+			<h3>Active Lists</h3>
+		</div>
+		<br>
+		<div>
+			<div class="panel panel-heading" style="border-width: 1px; border-style:solid; border-color:gray;" 
+			*ngFor="let list of (listsObservable | async); let i = index">
+				<!-- Default panel contents -->
+                <h4 class="panel-heading" style="background-color:#337ab7" >
+                    <a style="color:white" [routerLink] = "['/list/', i+1]">{{i+1}} - {{list.name}}</a>
+                    </h4>
+                    
+                    <div class="panel-body">
+                    <p>{{list.description}}</p>
+                    </div>
+                    
+                    <table class="table" style="font-size:10pt;">
+                      <tbody>
+                        <tr>
+                          <td>Due: <span>{{list.due}}</span></td>
+                          <td align="right">Items: <span class="badge">{{list.items}}</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                <!-- Table -->
+			</div>
+		</div>
+	</div>
+</div>
+
+Update the todolist.compoment.ts with:
+  import { Observable } from 'rxjs';
+  import { TodoproxyService } from '../todoproxy.service';
+  import { Router} from '@angular/router';
+
+  listsObservable: Observable<any[]>;
+
+  constructor(private router: Router, proxy$: TodoproxyService) {
+    this.listsObservable = proxy$.getListsIndex();
+  }
+
+  ngOnInit() {
+  }
+
+  clickEvent(): void {
+    this.router.navigate(['']);
+  }
+
+
+Show the data being populated in the todolist component.  Ensure that the node express server is running.
+
+Next, update the todotasks.compoment.html file with:
+<div class="container">
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel" style="color:white; background-color:#337ab7"> 
+			<h3>{{listId}}. List - {{name}}</h3>
+			<div>
+			<a style="color:white" href="#"><span class="glyphicon glyphicon-edit"></span></a>
+			<a style="color:white" href="#"><span class="glyphicon glyphicon-trash"></span></a>
+			<a style="color:white" href="#"><span class="glyphicon glyphicon-ok"></span></a>
+			</div>
+		</div>
+            <!-- Table -->
+            <table class="table" style="font-size:10pt;">
+                <thead>
+                    <tr>
+                        <th>Items</th>
+                        <th width="5%">Shared</th>
+                        <th width="5%">Status</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="listItems != null">
+                    <tr *ngFor="let result of listItems.tasks ; let i = index">
+                        <td>{{i+1}}. {{result.description}}</td>
+                        <td>{{result.taskId}}<span class="badge">{{result.shared}}</span></td>
+                        <td>
+                            <div class="input-group">
+                                <span class="input-group-addon" style="border-style:none;">
+                                <input type="checkbox">
+                                </span>
+                            </div>  
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+  		<!-- Table -->
+	</div>
+</div>
+
+
+Next update the todotasks.component.ts file with these imports:
+import { Observable } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
+import { TodoproxyService } from '../todoproxy.service';
+import { ActivatedRoute, Params } from '@angular/router';
+
+And, also update the body of the class with:
+
+  name: string = "";
+  listId: string;
+  listItems: any;
+
+  constructor(
+    private route: ActivatedRoute,
+    private list$: TodoproxyService
+  ) { 
+    this.listId = route.snapshot.params['id'];
+    this.list$.getItems(this.listId).subscribe((res: any) => {
+      this.name = res.name;
+      this.listItems = res;
+    });
+  }
+
+  ngOnInit():void {}
+
+Next we're going to add Angular Material to one of our pages. Start by installing Angular Material:
+
+Stop the ng serve
+
+ng add @angular/material
+
+Restart the ng serve
+
+Update the app.modules.ts file with the following imports:
+
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+
+Also, update the actual [imports] section on the NgModules area:
+    MatTableModule,
+    MatSortModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule
+
+Go to the todolist.compoment.ts and update the content of the class with:
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+
+export class TodolistsComponent {
+
+  displayedColumns: string[] = ['name', 'description', 'due', 'state', 'owner'];
+  dataSource = new MatTableDataSource<any>();
+
+  constructor(private router: Router, proxy$: TodoproxyService) {
+
+    proxy$.getListsIndex().subscribe( (result: any[]) => 
+    {
+      this.dataSource = new MatTableDataSource<any>(result);
+      //this.dataSource.sort = this.sort;
+      console.log("retrieved data from server.");
+    });
+  }
+
+  ngOnInit() {
+  }
+
+  clickEvent(): void {
+    this.router.navigate(['']);
+  }
+}
+
+
+Lastly, update the content of the todolist.compoment.html with:
+<div class="container  mat-app-background">
+<p>
+<mat-toolbar color='primary'>
+  <button class="example-icon" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button class="example-icon" mat-icon-button aria-label="Example icon-button with menu icon">
+    <mat-menu #menu="matMenu">
+      <div mat-menu-item>Item 1</div>
+      <div mat-menu-item>Item 2</div>
+    </mat-menu>
+  </button>
+  <span>To Do App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>share</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>help</mat-icon>
+  </button>
+</mat-toolbar>
+</p>
+
+<h3 class="panel-heading">Active Lists</h3>
+
+<div class="panel panel-default">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let element; let i = index">
+	   <a [routerLink] = "['/list/', i+1]">{{element.name}}</a> 
+	</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="due">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Due</th>
+        <td mat-cell *matCellDef="let element"> {{element.due}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef>State</th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="owner">
+        <th mat-header-cell *matHeaderCellDef>Owner</th>
+        <td mat-cell *matCellDef="let element"> {{element.owner}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    
+
+    </table>
+</div>
+<button mat-button (click)="clickEvent()" color="primary">Back</button>  
+
+</div> <!-- /container -->
