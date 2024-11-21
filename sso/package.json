@@ -27,7 +27,7 @@
     "q": "^1.5.0",
     "typescript": "^2.2.2",
     "url": "^0.11.0",
-    "ws": "^7.4.4"
+    "ws": "^7.4.6"
   },
   "devDependencies": {},
   "scripts": {
